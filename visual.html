@@ -1,0 +1,2490 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قادرون - دعم الإعاقة البصرية المتقدم</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Enhanced Visual Support Styles */
+        .visual-emoji-rainfall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .visual-emoji {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.7;
+            animation: visualEmojiRain linear infinite;
+        }
+
+        @keyframes visualEmojiRain {
+            0% {
+                transform: translateY(-100%) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.2;
+            }
+        }
+
+        .ai-advanced-description {
+            background: linear-gradient(135deg, #4A90E2 0%, #5FDDE5 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .ai-advanced-description::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle at center, 
+                rgba(255,255,255,0.2), 
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+
+        .ai-description-animated {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .ai-description-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4A90E2 0%, #5FDDE5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .ai-description-avatar i {
+            font-size: 3em;
+            color: white;
+        }
+
+        .ai-description-output {
+            flex-grow: 1;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-height: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-description-output::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg, 
+                rgba(52, 152, 219, 0.1), 
+                rgba(46, 204, 113, 0.1)
+            );
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .ai-description-output:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .dynamic-description-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #4A90E2, #5FDDE5);
+            animation: waveAnimation 2s infinite;
+        }
+
+        @keyframes waveAnimation {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .visual-support-header {
+            background: linear-gradient(135deg, #1ABC9C 0%, #16A085 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: headerGradientFlow 10s ease infinite;
+        }
+
+        @keyframes headerGradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .ai-description-advanced {
+            background: rgba(26, 188, 156, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .braille-keyboard-section {
+            margin-top: 20px;
+        }
+        
+        .braille-keyboard-container {
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #f0f0f0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .braille-display {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .braille-input-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .braille-dot-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .braille-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .braille-dot:hover {
+            background-color: #aaa;
+        }
+        
+        .braille-control-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .braille-control {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .braille-control:hover {
+            background-color: #3e8e41;
+        }
+        
+        .braille-translation-output {
+            margin-top: 20px;
+        }
+        
+        #braille-text-output {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .audio-books-section {
+            margin-top: 40px;
+        }
+
+        .audio-books-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .audio-book-card {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .audio-book-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .audio-book-controls {
+            margin-top: 20px;
+        }
+
+        .audio-book-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .audio-book-btn:hover {
+            background-color: #3e8e41;
+        }
+
+        .play-btn {
+            background-color: #4CAF50;
+        }
+
+        .download-btn {
+            background-color: #03A9F4;
+        }
+
+        .audio-book-player {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .audio-wave {
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 10px;
+        }
+
+        .audio-progress-bar {
+            height: 5px;
+            background-color: #4CAF50;
+            border-radius: 10px;
+        }
+        
+        .medical-support-section {
+            background-color: #f9f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .medical-professionals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .medical-professional-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .medical-professional-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .professional-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #4A90E2 0%, #5FDDE5 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 3em;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .professional-contact {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .contact-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn i {
+            font-size: 1.2em;
+        }
+
+        .contact-btn:first-child {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .professional-details {
+            margin-top: 15px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .medical-consultation {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .consultation-btn {
+            background: linear-gradient(135deg, #4A90E2 0%, #5FDDE5 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .consultation-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Voice Assistant Styles */
+        .ai-assistant-container {
+            display: flex;
+            background-color: #f4f6f9;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .ai-assistant-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8E44AD 0%, #9B59B6 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .avatar-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .voice-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .voice-wave.active {
+            animation: waveAnimation 1.5s infinite;
+        }
+        
+        @keyframes waveAnimation {
+            0%, 100% { height: 10%; }
+            50% { height: 30%; }
+        }
+        
+        .avatar-icon {
+            font-size: 3em;
+            color: white;
+            z-index: 2;
+        }
+        
+        .ai-assistant-interface {
+            flex-grow: 1;
+            margin-right: 20px;
+        }
+        
+        .assistant-output {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            min-height: 100px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .assistant-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .quick-commands {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .quick-command {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-command:hover {
+            background-color: #e0e0e0;
+        }
+        
+        /* Scene Analyzer Styles */
+        .scene-analyzer {
+            background-color: #f4f6f9;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .camera-preview {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #000;
+            margin-bottom: 20px;
+        }
+        
+        #scene-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .camera-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .overlay-boxes {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .detection-box {
+            position: absolute;
+            border: 2px solid #3498db;
+            background-color: rgba(52, 152, 219, 0.2);
+        }
+        
+        .detection-label {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            background-color: #3498db;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+        
+        .scene-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .scene-description {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .scene-results {
+            min-height: 80px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        /* Image to Audio Converter Styles */
+        .cinematic-audio-converter {
+            background-color: #f4f6f9;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .image-uploader {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .upload-area {
+            height: 200px;
+            border: 2px dashed #3498db;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover, .upload-area.drag-over {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-color: #2980b9;
+        }
+        
+        .upload-area i {
+            font-size: 3em;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .preview-image {
+            height: 200px;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .audio-player {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .audio-visualization {
+            margin-bottom: 20px;
+        }
+        
+        .audio-wave {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            height: 60px;
+            align-items: center;
+        }
+        
+        .wave-bar {
+            width: 10px;
+            height: 10px;
+            background-color: #3498db;
+            border-radius: 2px;
+            transition: height 0.2s ease;
+        }
+        
+        .audio-wave.active .wave-bar:nth-child(1) { 
+            height: 15px; 
+            animation: waveBar 1.5s infinite 0.2s; 
+        }
+        .audio-wave.active .wave-bar:nth-child(2) { 
+            height: 30px; 
+            animation: waveBar 1.5s infinite 0.4s; 
+        }
+        .audio-wave.active .wave-bar:nth-child(3) { 
+            height: 45px; 
+            animation: waveBar 1.5s infinite 0.6s; 
+        }
+        .audio-wave.active .wave-bar:nth-child(4) { 
+            height: 60px; 
+            animation: waveBar 1.5s infinite 0.8s; 
+        }
+        .audio-wave.active .wave-bar:nth-child(5) { 
+            height: 45px; 
+            animation: waveBar 1.5s infinite 1s; 
+        }
+        .audio-wave.active .wave-bar:nth-child(6) { 
+            height: 30px; 
+            animation: waveBar 1.5s infinite 1.2s; 
+        }
+        .audio-wave.active .wave-bar:nth-child(7) { 
+            height: 15px; 
+            animation: waveBar 1.5s infinite 1.4s; 
+        }
+        
+        @keyframes waveBar {
+            0%, 100% { height: 10px; }
+            50% { height: 60px; }
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .audio-control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .audio-control-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .audio-control-btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .audio-progress {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .time-display {
+            font-size: 0.8em;
+            text-align: right;
+        }
+        
+        /* Currency Recognition Styles */
+        .currency-detector {
+            background-color: #f4f6f9;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .currency-camera {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #000;
+            margin-bottom: 20px;
+        }
+        
+        #currency-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .currency-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .currency-detection-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 40%;
+            border: 3px solid #2ecc71;
+            border-radius: 10px;
+            box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.3);
+        }
+        
+        .currency-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .currency-results {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .currency-value {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            min-height: 40px;
+        }
+        
+        .currency-confidence {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .confidence-bar {
+            flex-grow: 1;
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .confidence-percentage {
+            min-width: 40px;
+            text-align: right;
+        }
+        
+        /* Voice Keyboard Styles */
+        .smart-voice-keyboard {
+            background-color: #f4f6f9;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .keyboard-input-area {
+            margin-bottom: 20px;
+        }
+        
+        #voice-keyboard-output {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            resize: none;
+        }
+        
+        .voice-keyboard-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .word-suggestions {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .suggestion-label {
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+        
+        .suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .suggestion {
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .suggestion:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        
+        /* Voice Browser Styles */
+        .voice-browser {
+            background-color: #f4f6f9;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .browser-interface {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .browser-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #ecf0f1;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .browser-address-bar {
+            flex-grow: 1;
+            margin: 0 10px;
+            padding: 5px 10px;
+            background-color: white;
+            border-radius: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .browser-controls {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .browser-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #bdc3c7;
+            color: white;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .browser-btn:hover {
+            background-color: #95a5a6;
+        }
+        
+        .browser-content {
+            padding: 20px;
+            min-height: 300px;
+        }
+        
+        .voice-browser-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .voice-status {
+            flex-grow: 1;
+            padding: 10px 15px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+        }
+        
+        /* Digital Braille Styles */
+        .digital-braille-trainer {
+            background-color: #f4f6f9;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .braille-display {
+            margin-bottom: 20px;
+        }
+        
+        .braille-cells {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .braille-cell {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 5px;
+            width: 40px;
+            height: 60px;
+        }
+        
+        .braille-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .braille-dot[data-active="true"] {
+            background-color: #3498db;
+            transform: scale(1.2);
+        }
+        
+        .braille-content {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .braille-file-upload, .braille-learning-area {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .file-upload-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .quiz-question {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .quiz-option {
+            padding: 10px;
+            background-color: #ecf0f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-option:hover {
+            background-color: #bdc3c7;
+        }
+        
+        .quiz-option.correct {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .quiz-option.incorrect {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .interactive-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .interactive-button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        
+        .interactive-button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="visual-support-header">
+            <h1>قادرون - دعم الإعاقة البصرية المتقدم</h1>
+            <p>حلول متكاملة للتمكين والاستقلالية</p>
+            <a href="index.html" class="back-btn">العودة للرئيسية</a>
+        </header>
+
+        <main>
+            <section id="visual-support">
+                <div class="ai-description-advanced">
+                    <div class="ai-description-avatar">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="ai-description-output" id="ai-description-output">
+                        جاهز لوصف محيطك باستخدام الذكاء الاصطناعي
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <h3>قارئ النصوص الذكي</h3>
+                    <p>قراءة النصوص بتقنيات صوتية متطورة</p>
+                    <button id="text-to-speech" class="feature-btn">تشغيل القارئ</button>
+                    <textarea id="text-to-read" placeholder="أدخل النص المراد قراءته"></textarea>
+                </div>
+
+                <div class="feature">
+                    <h3>التعرف على المحيط</h3>
+                    <p>وصف البيئة المحيطة باستخدام تقنيات الذكاء الاصطناعي</p>
+                    <button id="environment-description" class="feature-btn">وصف المحيط</button>
+                    <div id="environment-output" class="feature-output"></div>
+                </div>
+            </section>
+
+            <section class="ai-advanced-description">
+                <h2>وصف محيطي المتقدم بالذكاء الاصطناعي</h2>
+                <div class="ai-description-animated">
+                    <div class="ai-description-avatar">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="ai-description-output" id="advanced-ai-description">
+                        جاهز لوصف محيطك بتقنيات متطورة
+                        <div class="dynamic-description-wave"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="audio-books-section">
+                <h2>المكتبة الصوتية المتخصصة</h2>
+                <div class="audio-books-grid">
+                    <div class="audio-book-card">
+                        <div class="audio-book-icon">📖</div>
+                        <h3>قصة رحلة التحدي</h3>
+                        <p>قصة واقعية عن التغلب على التحديات البصرية</p>
+                        <div class="audio-book-controls">
+                            <button class="audio-book-btn play-btn" data-book="challenge-story">
+                                <i class="fas fa-play"></i> استماع
+                            </button>
+                            <button class="audio-book-btn download-btn" data-book="challenge-story">
+                                <i class="fas fa-download"></i> تحميل
+                            </button>
+                        </div>
+                        <div class="audio-book-player" id="challenge-story-player">
+                            <div class="audio-wave"></div>
+                            <div class="audio-progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="audio-book-card">
+                        <div class="audio-book-icon">📚</div>
+                        <h3>عالم بلا حدود</h3>
+                        <p>كتاب صوتي عن التمكين والإمكانيات اللامحدودة</p>
+                        <div class="audio-book-controls">
+                            <button class="audio-book-btn play-btn" data-book="limitless-world">
+                                <i class="fas fa-play"></i> استماع
+                            </button>
+                            <button class="audio-book-btn download-btn" data-book="limitless-world">
+                                <i class="fas fa-download"></i> تحميل
+                            </button>
+                        </div>
+                        <div class="audio-book-player" id="limitless-world-player">
+                            <div class="audio-wave"></div>
+                            <div class="audio-progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="audio-book-card">
+                        <div class="audio-book-icon">🌟</div>
+                        <h3>قصص ملهمة</h3>
+                        <p>مجموعة قصص عن الإنجازات والتحديات</p>
+                        <div class="audio-book-controls">
+                            <button class="audio-book-btn play-btn" data-book="inspiring-stories">
+                                <i class="fas fa-play"></i> استماع
+                            </button>
+                            <button class="audio-book-btn download-btn" data-book="inspiring-stories">
+                                <i class="fas fa-download"></i> تحميل
+                            </button>
+                        </div>
+                        <div class="audio-book-player" id="inspiring-stories-player">
+                            <div class="audio-wave"></div>
+                            <div class="audio-progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ai-voice-assistant-section">
+                <h2>المساعد الشخصي الصوتي فائق الذكاء</h2>
+                <div class="ai-assistant-container">
+                    <div class="ai-assistant-avatar">
+                        <div class="avatar-animation">
+                            <div class="voice-wave"></div>
+                        </div>
+                        <div class="avatar-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="ai-assistant-interface">
+                        <div class="assistant-output" id="assistant-response">
+                            مرحباً، أنا مساعدك الشخصي. كيف يمكنني مساعدتك اليوم؟
+                        </div>
+                        <div class="assistant-controls">
+                            <button id="activate-voice-assistant" class="interactive-button">
+                                <i class="fas fa-microphone"></i> تحدث معي
+                            </button>
+                            <div class="quick-commands">
+                                <button class="quick-command" data-command="اقرأ هذا النص">قراءة نص</button>
+                                <button class="quick-command" data-command="صف لي المشهد">وصف المشهد</button>
+                                <button class="quick-command" data-command="ابحث عن">بحث</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="smart-camera-section">
+                <h2>كاميرا ذكية لتحليل المشهد الحقيقي</h2>
+                <div class="scene-analyzer">
+                    <div class="camera-preview">
+                        <video id="scene-video" autoplay playsinline></video>
+                        <div class="camera-overlay">
+                            <div class="overlay-boxes" id="detection-boxes"></div>
+                        </div>
+                    </div>
+                    <div class="scene-controls">
+                        <button id="start-scene-analysis" class="interactive-button">
+                            <i class="fas fa-camera"></i> بدء تحليل المشهد
+                        </button>
+                        <button id="stop-scene-analysis" class="interactive-button" disabled>
+                            <i class="fas fa-stop"></i> إيقاف التحليل
+                        </button>
+                    </div>
+                    <div class="scene-description">
+                        <h3>وصف المشهد:</h3>
+                        <div id="scene-results" class="scene-results">
+                            سيظهر هنا وصف تفصيلي للمشهد
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="image-to-audio-section">
+                <h2>تحويل الصور إلى صوت سينمائي</h2>
+                <div class="cinematic-audio-converter">
+                    <div class="image-uploader">
+                        <div class="upload-area" id="image-upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>قم بسحب الصورة هنا أو انقر للاختيار</p>
+                            <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="preview-image" id="image-preview" style="display: none;"></div>
+                    </div>
+                    <div class="audio-controls">
+                        <button id="convert-to-audio" class="interactive-button" disabled>
+                            <i class="fas fa-magic"></i> تحويل إلى وصف صوتي
+                        </button>
+                        <div class="audio-player" id="audio-player" style="display: none;">
+                            <div class="audio-visualization">
+                                <div class="audio-wave" id="audio-wave">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                            </div>
+                            <div class="audio-controls">
+                                <button id="play-audio" class="audio-control-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button id="pause-audio" class="audio-control-btn" disabled>
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <div class="audio-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="audio-progress"></div>
+                                    </div>
+                                    <div class="time-display" id="audio-time">00:00 / 00:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="currency-recognition-section">
+                <h2>قراءة العملات والتعرف عليها</h2>
+                <div class="currency-detector">
+                    <div class="currency-camera">
+                        <video id="currency-video" autoplay playsinline></video>
+                        <div class="currency-overlay" id="currency-overlay"></div>
+                    </div>
+                    <div class="currency-controls">
+                        <button id="start-currency-detection" class="interactive-button">
+                            <i class="fas fa-money-bill-wave"></i> بدء التعرف على العملات
+                        </button>
+                        <button id="capture-currency" class="interactive-button" disabled>
+                            <i class="fas fa-camera"></i> التقاط صورة
+                        </button>
+                    </div>
+                    <div class="currency-results">
+                        <div id="currency-value" class="currency-value">
+                            سيظهر هنا فئة العملة المكتشفة
+                        </div>
+                        <div class="currency-confidence">
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" id="currency-confidence"></div>
+                            </div>
+                            <div class="confidence-percentage" id="confidence-percentage">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="voice-keyboard-section">
+                <h2>لوحة مفاتيح صوتية ذكية</h2>
+                <div class="smart-voice-keyboard">
+                    <div class="keyboard-input-area">
+                        <textarea id="voice-keyboard-output" placeholder="سيظهر هنا النص المكتوب بواسطة صوتك..." readonly></textarea>
+                    </div>
+                    <div class="voice-keyboard-controls">
+                        <button id="start-voice-keyboard" class="interactive-button">
+                            <i class="fas fa-microphone"></i> بدء الكتابة الصوتية
+                        </button>
+                        <button id="stop-voice-keyboard" class="interactive-button" disabled>
+                            <i class="fas fa-stop"></i> إيقاف الكتابة
+                        </button>
+                        <button id="clear-voice-keyboard" class="interactive-button">
+                            <i class="fas fa-trash"></i> مسح النص
+                        </button>
+                    </div>
+                    <div class="word-suggestions">
+                        <div class="suggestion-label">اقتراحات الكلمات:</div>
+                        <div class="suggestions" id="word-suggestions">
+                            <span class="suggestion">سيتم</span>
+                            <span class="suggestion">عرض</span>
+                            <span class="suggestion">الاقتراحات</span>
+                            <span class="suggestion">هنا</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="hands-free-browsing-section">
+                <h2>تصفح المواقع بالعين المغلقة</h2>
+                <div class="voice-browser">
+                    <div class="browser-interface">
+                        <div class="browser-toolbar">
+                            <div class="browser-address-bar">
+                                <span class="browser-url" id="voice-browser-url">موقع قادرون للدعم</span>
+                            </div>
+                            <div class="browser-controls">
+                                <button class="browser-btn back-btn"><i class="fas fa-arrow-left"></i></button>
+                                <button class="browser-btn forward-btn"><i class="fas fa-arrow-right"></i></button>
+                                <button class="browser-btn refresh-btn"><i class="fas fa-redo"></i></button>
+                            </div>
+                        </div>
+                        <div class="browser-content" id="voice-browser-content">
+                            <div class="placeholder-content">
+                                <h3>مرحباً بك في تجربة التصفح الصوتي</h3>
+                                <p>يمكنك تصفح المواقع باستخدام صوتك فقط</p>
+                                <ul>
+                                    <li>قل "افتح الصفحة التالية" للانتقال للأمام</li>
+                                    <li>قل "ارجع للصفحة السابقة" للرجوع للخلف</li>
+                                    <li>قل "ابحث عن..." للبحث عن موضوع محدد</li>
+                                    <li>قل "اضغط على..." للنقر على عنصر في الصفحة</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voice-browser-controls">
+                        <button id="start-voice-browsing" class="interactive-button">
+                            <i class="fas fa-microphone"></i> بدء التصفح الصوتي
+                        </button>
+                        <div class="voice-status" id="voice-browser-status">
+                            انقر على الزر لبدء التصفح الصوتي
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="braille-test-section">
+                <h2>اختبار قراءة برايل رقمي</h2>
+                <div class="digital-braille-trainer">
+                    <div class="braille-display">
+                        <div class="braille-cells" id="braille-cells">
+                            <!-- Braille cells will be generated here -->
+                            <div class="braille-cell">
+                                <div class="braille-dot" data-active="true"></div>
+                                <div class="braille-dot" data-active="false"></div>
+                                <div class="braille-dot" data-active="true"></div>
+                                <div class="braille-dot" data-active="false"></div>
+                                <div class="braille-dot" data-active="true"></div>
+                                <div class="braille-dot" data-active="false"></div>
+                            </div>
+                            <div class="braille-cell">
+                                <div class="braille-dot" data-active="true"></div>
+                                <div class="braille-dot" data-active="true"></div>
+                                <div class="braille-dot" data-active="false"></div>
+                                <div class="braille-dot" data-active="false"></div>
+                                <div class="braille-dot" data-active="false"></div>
+                                <div class="braille-dot" data-active="true"></div>
+                            </div>
+                            <div class="braille-cell">
+                                <div class="braille-dot" data-active="true"></div>
+                                <div class="braille-dot" data-active="false"></div>
+                                <div class="braille-dot" data-active="false"></div>
+                                <div class="braille-dot" data-active="true"></div>
+                                <div class="braille-dot" data-active="false"></div>
+                                <div class="braille-dot" data-active="true"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="braille-content">
+                        <div class="braille-file-upload">
+                            <label for="braille-file">اختر ملف PDF أو Word للتحويل:</label>
+                            <div class="file-upload-group">
+                                <input type="file" id="braille-file" accept=".pdf,.doc,.docx">
+                                <button id="convert-to-braille" class="interactive-button">
+                                    تحويل إلى برايل
+                                </button>
+                            </div>
+                        </div>
+                        <div class="braille-learning-area">
+                            <div class="braille-quiz">
+                                <h3>اختبر معرفتك بالبرايل</h3>
+                                <div class="quiz-question" id="braille-question">
+                                    ما هو الحرف الممثل بنقاط برايل المعروضة أعلاه؟
+                                </div>
+                                <div class="quiz-options">
+                                    <button class="quiz-option">أ</button>
+                                    <button class="quiz-option">ب</button>
+                                    <button class="quiz-option">ت</button>
+                                    <button class="quiz-option">ث</button>
+                                </div>
+                            </div>
+                            <div class="braille-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 30%"></div>
+                                </div>
+                                <div class="progress-label">تقدم التعلم: 30%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="braille-keyboard-section">
+                <h2>لوحة مفاتيح برايل الذكية</h2>
+                <div class="braille-keyboard-container">
+                    <div class="braille-display" id="braille-display">
+                        <p>النص بلغة برايل سيظهر هنا</p>
+                    </div>
+                    
+                    <div class="braille-input-grid">
+                        <div class="braille-dot-row">
+                            <button class="braille-dot" data-dot="1">⠁</button>
+                            <button class="braille-dot" data-dot="2">⠃</button>
+                            <button class="braille-dot" data-dot="3">⠉</button>
+                        </div>
+                        <div class="braille-dot-row">
+                            <button class="braille-dot" data-dot="4">⠙</button>
+                            <button class="braille-dot" data-dot="5">⠑</button>
+                            <button class="braille-dot" data-dot="6">⠋</button>
+                        </div>
+                        <div class="braille-control-row">
+                            <button id="braille-space-btn" class="braille-control">مسافة</button>
+                            <button id="braille-clear-btn" class="braille-control">مسح</button>
+                            <button id="braille-translate-btn" class="braille-control">ترجمة</button>
+                        </div>
+                    </div>
+
+                    <div class="braille-translation-output">
+                        <h3>الترجمة:</h3>
+                        <div id="braille-text-output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="medical-support-section">
+                <h2>الدعم الطبي المتخصص</h2>
+                <p>نقدم لك دعمًا طبيًا متكاملًا من أفضل المتخصصين</p>
+                
+                <div class="medical-professionals-grid">
+                    <div class="medical-professional-card">
+                        <div class="professional-avatar">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>د. محروس محمد الجندي</h3>
+                        <p>استشاري طب العيون والإعاقة البصرية</p>
+                        <div class="professional-contact">
+                            <a href="tel:01142746774" class="contact-btn">
+                                <i class="fas fa-phone"></i> اتصال
+                            </a>
+                            <a href="https://wa.me/201142746774" class="contact-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> واتساب
+                            </a>
+                        </div>
+                        <div class="professional-details">
+                            <p>خبرة أكثر من 20 عامًا في مجال طب العيون</p>
+                            <p>متخصص في علاج وتأهيل الإعاقات البصرية</p>
+                        </div>
+                    </div>
+
+                    <div class="medical-professional-card">
+                        <div class="professional-avatar">
+                            <i class="fas fa-user-nurse"></i>
+                        </div>
+                        <h3>محمد سعيد</h3>
+                        <p>أخصائي اعاقات بصرية</p>
+                        <div class="professional-contact">
+                            <a href="tel:01123465467" class="contact-btn">
+                                <i class="fas fa-phone"></i> اتصال
+                            </a>
+                            <a href="https://wa.me/201123465467" class="contact-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> واتساب
+                            </a>
+                        </div>
+                        <div class="professional-details">
+                            <p>متخصص في التأهيل والدعم للمصابين بالإعاقات البصرية</p>
+                            <p>برامج تدريبية وتأهيلية مخصصة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="medical-consultation">
+                    <h3>خدمات استشارية مجانية</h3>
+                    <p>نقدم استشارات أولية مجانية للمصابين بالإعاقة البصرية</p>
+                    <button id="book-consultation" class="consultation-btn">
+                        <i class="fas fa-calendar-alt"></i> حجز استشارة
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="visual-emoji-rainfall" id="visual-emoji-rainfall"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Advanced Text-to-Speech
+            function advancedTextToSpeech(text) {
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'ar-SA';
+                    utterance.rate = 0.8; // Slower, more clear speech
+                    utterance.pitch = 1; // Normal pitch
+                    window.speechSynthesis.speak(utterance);
+                }
+            }
+
+            // Welcome Message
+            function welcomeVisualSupport() {
+                const welcomeMessage = "مرحباً يا بطل بقسم الإعاقة البصرية. أنا هنا لمساعدتك في كل شيء";
+                advancedTextToSpeech(welcomeMessage);
+            }
+
+            // AI Environment Description
+            function aiEnvironmentDescription() {
+                const descriptions = [
+                    "أنا أرى غرفة مكتبية بها مكتب خشبي وكرسي أرجواني اللون",
+                    "المكان هادئ مع إضاءة ناعمة وبعض الكتب على الرفوف",
+                    "هذا مكان مريح مع نافذة تطل على حديقة خضراء",
+                    "أتعرف على أثاث عصري بألوان هادئة وتصميم أنيق"
+                ];
+
+                const randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];
+                const aiDescriptionOutput = document.getElementById('ai-description-output');
+                aiDescriptionOutput.textContent = randomDescription;
+                advancedTextToSpeech(randomDescription);
+            }
+
+            // Enhanced Text-to-Speech Feature
+            document.getElementById('text-to-speech')?.addEventListener('click', () => {
+                const textToRead = document.getElementById('text-to-read').value;
+                if (textToRead) {
+                    advancedTextToSpeech(textToRead);
+                } else {
+                    advancedTextToSpeech("يرجى إدخال نص للقراءة");
+                }
+            });
+
+            // Enhanced Environment Description
+            document.getElementById('environment-description')?.addEventListener('click', aiEnvironmentDescription);
+
+            // Enhanced AI Description
+            function updateAdvancedAIDescription() {
+                const descriptions = [
+                    "أرى غرفة مكتبية عصرية مع إضاءة ناعمة وأثاث أنيق 🏠",
+                    "المساحة مريحة مع نوافذ تطل على حديقة خضراء 🌳",
+                    "تفاصيل دقيقة: طاولة خشبية، رفوف كتب، وكرسي مريح 📚",
+                    "محيط هادئ مع لمسات إبداعية وفن عصري 🎨"
+                ];
+
+                const descriptionElement = document.getElementById('advanced-ai-description');
+                const randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];
+                
+                descriptionElement.innerHTML = `
+                    ${randomDescription}
+                    <div class="dynamic-description-wave"></div>
+                `;
+            }
+
+            // Update description every 5 seconds
+            setInterval(updateAdvancedAIDescription, 5000);
+
+            // Visual Emoji Rainfall Animation
+            function createVisualEmojis() {
+                const visualEmojiRainfall = document.getElementById('visual-emoji-rainfall');
+                const visualEmojis = ['👀', '🔍', '👁️', '📸', '🖼️', '👓', '💡'];
+
+                function createEmojiRaindrop() {
+                    const emoji = document.createElement('div');
+                    emoji.classList.add('visual-emoji');
+                    
+                    // Random emoji selection
+                    emoji.textContent = visualEmojis[Math.floor(Math.random() * visualEmojis.length)];
+                    
+                    // Random horizontal position
+                    emoji.style.left = `${Math.random() * 100}%`;
+                    
+                    // Random animation duration
+                    const duration = Math.random() * 10 + 5;
+                    emoji.style.animationDuration = `${duration}s`;
+                    
+                    // Random delay
+                    emoji.style.animationDelay = `-${Math.random() * duration}s`;
+                    
+                    visualEmojiRainfall.appendChild(emoji);
+
+                    // Remove emoji after animation
+                    emoji.addEventListener('animationiteration', () => {
+                        visualEmojiRainfall.removeChild(emoji);
+                        createEmojiRaindrop();
+                    });
+                }
+
+                // Create initial emoji raindrops
+                for (let i = 0; i < 30; i++) {
+                    createEmojiRaindrop();
+                }
+            }
+
+            createVisualEmojis();
+
+            // Braille Keyboard
+            const brailleDots = document.querySelectorAll('.braille-dot');
+            const brailleDisplay = document.getElementById('braille-display');
+            const brailleTextOutput = document.getElementById('braille-text-output');
+            let brailleInput = '';
+
+            brailleDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const dotNumber = dot.getAttribute('data-dot');
+                    brailleInput += dotNumber;
+                    brailleDisplay.textContent = `النص بلغة برايل: ${brailleInput}`;
+                });
+            });
+
+            document.getElementById('braille-space-btn').addEventListener('click', () => {
+                brailleInput += ' ';
+                brailleDisplay.textContent = `النص بلغة برايل: ${brailleInput}`;
+            });
+
+            document.getElementById('braille-clear-btn').addEventListener('click', () => {
+                brailleInput = '';
+                brailleDisplay.textContent = 'النص بلغة برايل سيظهر هنا';
+                brailleTextOutput.textContent = '';
+            });
+
+            document.getElementById('braille-translate-btn').addEventListener('click', () => {
+                // Translate Braille to text
+                const translation = brailleToText(brailleInput);
+                brailleTextOutput.textContent = translation;
+            });
+
+            function brailleToText(brailleInput) {
+                // This function should translate Braille to text
+                // For now, it just returns the input
+                return brailleInput;
+            }
+
+            // Call Welcome Message
+            welcomeVisualSupport();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookConsultationBtn = document.getElementById('book-consultation');
+            
+            bookConsultationBtn.addEventListener('click', () => {
+                Swal.fire({
+                    title: 'حجز استشارة طبية',
+                    html: `
+                        <p>للحجز والتواصل، يرجى الاتصال بأحد الأطباء:</p>
+                        <h3>د. محروس محمد الجندي</h3>
+                        <p>رقم الهاتف: 01142746774</p>
+                        <h3>محمد سعيد</h3>
+                        <p>رقم الهاتف: 01123465467</p>
+                        <small>سيتم مساعدتك في تحديد موعد الاستشارة</small>
+                    `,
+                    icon: 'info',
+                    confirmButtonText: 'نسخ أرقام التواصل',
+                    showCancelButton: true,
+                    cancelButtonText: 'إغلاق'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const phoneNumbers = '01142746774\n01123465467';
+                        navigator.clipboard.writeText(phoneNumbers).then(() => {
+                            Swal.fire('تم نسخ أرقام التواصل', '', 'success');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intelligent Voice Assistant
+            const activateVoiceAssistantBtn = document.getElementById('activate-voice-assistant');
+            const assistantResponse = document.getElementById('assistant-response');
+            const quickCommands = document.querySelectorAll('.quick-command');
+            const voiceWave = document.querySelector('.voice-wave');
+            
+            activateVoiceAssistantBtn.addEventListener('click', () => {
+                if ('webkitSpeechRecognition' in window) {
+                    const recognition = new webkitSpeechRecognition();
+                    recognition.lang = 'ar-SA';
+                    recognition.continuous = false;
+                    
+                    assistantResponse.textContent = 'أنا أستمع إليك...';
+                    voiceWave.classList.add('active');
+                    
+                    recognition.onresult = (event) => {
+                        const command = event.results[0][0].transcript;
+                        handleVoiceCommand(command);
+                    };
+                    
+                    recognition.onerror = (event) => {
+                        assistantResponse.textContent = `عذراً، حدث خطأ: ${event.error}`;
+                        voiceWave.classList.remove('active');
+                    };
+                    
+                    recognition.onend = () => {
+                        voiceWave.classList.remove('active');
+                    };
+                    
+                    recognition.start();
+                } else {
+                    assistantResponse.textContent = 'عذراً، متصفحك لا يدعم خاصية التعرف على الصوت.';
+                }
+            });
+            
+            quickCommands.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const command = btn.getAttribute('data-command');
+                    handleVoiceCommand(command);
+                });
+            });
+            
+            function handleVoiceCommand(command) {
+                // Process the command and generate response
+                let response = '';
+                
+                if (command.includes('اقرأ') || command.includes('قراءة')) {
+                    response = 'بالتأكيد، سأقرأ النص لك. يرجى تحديد النص المراد قراءته.';
+                    
+                    // Example of text reading functionality
+                    if (command.includes('هذا النص') || command.includes('هذه الصفحة')) {
+                        const textToRead = 'مرحباً بك في قسم المساعد الصوتي الذكي من قادرون. نحن هنا لمساعدتك على استخدام التطبيق بسهولة.';
+                        response = 'سأقرأ لك النص الآن.';
+                        
+                        setTimeout(() => {
+                            if ('speechSynthesis' in window) {
+                                const utterance = new SpeechSynthesisUtterance(textToRead);
+                                utterance.lang = 'ar-SA';
+                                window.speechSynthesis.speak(utterance);
+                            }
+                        }, 1000);
+                    }
+                } 
+                else if (command.includes('صف') || command.includes('وصف المشهد')) {
+                    response = 'أرى أمامي غرفة مكتبية جيدة الإضاءة. يوجد مكتب خشبي بني اللون، وعليه جهاز كمبيوتر. يجلس شخص يرتدي قميصًا أزرق على بعد متر واحد تقريبًا. الغرفة مضاءة بشكل جيد من خلال نافذة كبيرة على اليمين.';
+                }
+                else if (command.includes('ابحث عن')) {
+                    const searchTerm = command.replace('ابحث عن', '').trim();
+                    if (searchTerm) {
+                        response = `سأبحث لك عن "${searchTerm}". جاري البحث...`;
+                    } else {
+                        response = 'ماذا تريد أن أبحث عنه؟';
+                    }
+                }
+                else if (command.includes('ساعدني') || command.includes('مساعدة')) {
+                    response = 'بالتأكيد، يمكنني مساعدتك في قراءة النصوص، وصف المشاهد، البحث عن المعلومات، والمزيد. ماذا تريد أن أفعل بالتحديد؟';
+                }
+                else {
+                    response = `لقد قلت: "${command}". كيف يمكنني مساعدتك بخصوص هذا؟`;
+                }
+                
+                // Update the assistant response
+                assistantResponse.textContent = response;
+                
+                // Speak the response
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(response);
+                    utterance.lang = 'ar-SA';
+                    window.speechSynthesis.speak(utterance);
+                }
+            }
+            
+            // Scene Analysis Camera
+            const startSceneAnalysisBtn = document.getElementById('start-scene-analysis');
+            const stopSceneAnalysisBtn = document.getElementById('stop-scene-analysis');
+            const sceneVideo = document.getElementById('scene-video');
+            const sceneResults = document.getElementById('scene-results');
+            const detectionBoxes = document.getElementById('detection-boxes');
+            
+            startSceneAnalysisBtn.addEventListener('click', () => {
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(stream => {
+                            sceneVideo.srcObject = stream;
+                            startSceneAnalysisBtn.disabled = true;
+                            stopSceneAnalysisBtn.disabled = false;
+                            
+                            // Start scene analysis
+                            startSceneAnalysis();
+                        })
+                        .catch(err => {
+                            console.error('Error accessing camera: ', err);
+                            sceneResults.textContent = 'خطأ في الوصول إلى الكاميرا. يرجى التأكد من السماح بالوصول.';
+                        });
+                } else {
+                    sceneResults.textContent = 'عذراً، متصفحك لا يدعم الوصول إلى الكاميرا.';
+                }
+            });
+            
+            stopSceneAnalysisBtn.addEventListener('click', () => {
+                const stream = sceneVideo.srcObject;
+                const tracks = stream.getTracks();
+                
+                tracks.forEach(track => track.stop());
+                sceneVideo.srcObject = null;
+                
+                startSceneAnalysisBtn.disabled = false;
+                stopSceneAnalysisBtn.disabled = true;
+                
+                // Clear scene analysis
+                clearInterval(sceneAnalysisInterval);
+                detectionBoxes.innerHTML = '';
+            });
+            
+            let sceneAnalysisInterval;
+            
+            function startSceneAnalysis() {
+                // Simulate object detection
+                const detectedObjects = [
+                    { label: 'شخص', confidence: 0.92, x: 0.2, y: 0.3, width: 0.3, height: 0.5 },
+                    { label: 'كرسي', confidence: 0.87, x: 0.6, y: 0.6, width: 0.2, height: 0.3 },
+                    { label: 'طاولة', confidence: 0.83, x: 0.4, y: 0.7, width: 0.4, height: 0.2 }
+                ];
+                
+                // Create detection boxes
+                detectionBoxes.innerHTML = '';
+                detectedObjects.forEach(obj => {
+                    const box = document.createElement('div');
+                    box.className = 'detection-box';
+                    box.style.left = `${obj.x * 100}%`;
+                    box.style.top = `${obj.y * 100}%`;
+                    box.style.width = `${obj.width * 100}%`;
+                    box.style.height = `${obj.height * 100}%`;
+                    
+                    const label = document.createElement('div');
+                    label.className = 'detection-label';
+                    label.textContent = `${obj.label} (${Math.round(obj.confidence * 100)}%)`;
+                    
+                    box.appendChild(label);
+                    detectionBoxes.appendChild(box);
+                });
+                
+                // Generate scene description
+                const sceneDescriptions = [
+                    "أمامك شخص يرتدي قميص أزرق، يجلس على كرسي، وأمامه طاولة. الشخص على بعد حوالي 2 متر منك.",
+                    "المكان هادئ مع إضاءة ناعمة وبعض الكتب على الرفوف",
+                    "هذا مكان مريح مع نافذة تطل على حديقة خضراء",
+                    "أتعرف على أثاث عصري بألوان هادئة وتصميم أنيق"
+                ];
+                
+                sceneAnalysisInterval = setInterval(() => {
+                    const randomDescription = sceneDescriptions[Math.floor(Math.random() * sceneDescriptions.length)];
+                    sceneResults.textContent = randomDescription;
+                    
+                    // Read the description aloud
+                    if ('speechSynthesis' in window) {
+                        const utterance = new SpeechSynthesisUtterance(randomDescription);
+                        utterance.lang = 'ar-SA';
+                        window.speechSynthesis.speak(utterance);
+                    }
+                }, 5000); // Update every 5 seconds
+            }
+            
+            // Image to Audio Conversion
+            const imageUploadArea = document.getElementById('image-upload-area');
+            const imageUpload = document.getElementById('image-upload');
+            const imagePreview = document.getElementById('image-preview');
+            const convertToAudioBtn = document.getElementById('convert-to-audio');
+            const audioPlayer = document.getElementById('audio-player');
+            const audioWave = document.getElementById('audio-wave');
+            const playAudioBtn = document.getElementById('play-audio');
+            const pauseAudioBtn = document.getElementById('pause-audio');
+            const audioProgress = document.getElementById('audio-progress');
+            const audioTime = document.getElementById('audio-time');
+            
+            imageUploadArea.addEventListener('click', () => {
+                imageUpload.click();
+            });
+            
+            imageUploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                imageUploadArea.classList.add('drag-over');
+            });
+            
+            imageUploadArea.addEventListener('dragleave', () => {
+                imageUploadArea.classList.remove('drag-over');
+            });
+            
+            imageUploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                imageUploadArea.classList.remove('drag-over');
+                
+                if (e.dataTransfer.files.length) {
+                    handleImageUpload(e.dataTransfer.files[0]);
+                }
+            });
+            
+            imageUpload.addEventListener('change', () => {
+                if (imageUpload.files.length) {
+                    handleImageUpload(imageUpload.files[0]);
+                }
+            });
+            
+            function handleImageUpload(file) {
+                if (!file.type.match('image.*')) {
+                    alert('يرجى اختيار ملف صورة فقط.');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    imagePreview.style.display = 'block';
+                    imagePreview.style.backgroundImage = `url(${e.target.result})`;
+                    imageUploadArea.style.display = 'none';
+                    convertToAudioBtn.disabled = false;
+                };
+                
+                reader.readAsDataURL(file);
+            }
+            
+            convertToAudioBtn.addEventListener('click', () => {
+                // Simulate conversion
+                convertToAudioBtn.disabled = true;
+                convertToAudioBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحويل...';
+                
+                setTimeout(() => {
+                    audioPlayer.style.display = 'block';
+                    convertToAudioBtn.innerHTML = '<i class="fas fa-check"></i> تم التحويل';
+                    
+                    // Sample cinematic description based on an image
+                    const cinematicDescription = 
+                        "في الصورة نرى منظراً طبيعياً خلاباً، حيث تمتد السماء الزرقاء الصافية فوق جبال شاهقة مغطاة بالثلوج البيضاء. " +
+                        "تتخلل المشهد بحيرة هادئة تعكس الجبال كمرآة طبيعية. " +
+                        "في المقدمة، مجموعة من الأشجار الخضراء تتمايل مع نسيم لطيف. " +
+                        "الضوء الذهبي للشمس يغمر المشهد بدفء ساحر، " +
+                        "مما يخلق ظلالاً رقيقة على سفوح الجبال. " +
+                        "إنه مشهد يبعث على السكينة والهدوء، " +
+                        "كلوحة فنية طبيعية متكاملة.";
+                    
+                    // Speak the cinematic description
+                    if ('speechSynthesis' in window) {
+                        // Cancel any previous speech
+                        window.speechSynthesis.cancel();
+                        
+                        const utterance = new SpeechSynthesisUtterance(cinematicDescription);
+                        utterance.lang = 'ar-SA';
+                        window.speechSynthesis.speak(utterance);
+                        
+                        // Activate audio visualization
+                        audioWave.classList.add('active');
+                        playAudioBtn.disabled = true;
+                        pauseAudioBtn.disabled = false;
+                        
+                        // Simulate progress
+                        let progress = 0;
+                        const progressInterval = setInterval(() => {
+                            progress += 1;
+                            if (progress > 100) {
+                                clearInterval(progressInterval);
+                                audioWave.classList.remove('active');
+                                playAudioBtn.disabled = false;
+                                pauseAudioBtn.disabled = true;
+                                return;
+                            }
+                            
+                            audioProgress.style.width = `${progress}%`;
+                            
+                            // Format time display
+                            const totalSeconds = 60; // 1 minute total duration
+                            const currentSeconds = Math.floor(totalSeconds * progress / 100);
+                            const currentMinutes = Math.floor(currentSeconds / 60);
+                            const currentRemainingSeconds = currentSeconds % 60;
+                            const totalMinutes = Math.floor(totalSeconds / 60);
+                            const totalRemainingSeconds = totalSeconds % 60;
+                            
+                            audioTime.textContent = `${String(currentMinutes).padStart(2, '0')}:${String(currentRemainingSeconds).padStart(2, '0')} / ${String(totalMinutes).padStart(2, '0')}:${String(totalRemainingSeconds).padStart(2, '0')}`;
+                        }, 600); // 60 seconds total
+                        
+                        // Handle pause button
+                        pauseAudioBtn.onclick = () => {
+                            window.speechSynthesis.pause();
+                            clearInterval(progressInterval);
+                            audioWave.classList.remove('active');
+                            playAudioBtn.disabled = false;
+                            pauseAudioBtn.disabled = true;
+                        };
+                        
+                        // Handle play button
+                        playAudioBtn.onclick = () => {
+                            window.speechSynthesis.resume();
+                            audioWave.classList.add('active');
+                            playAudioBtn.disabled = true;
+                            pauseAudioBtn.disabled = false;
+                        };
+                    }
+                }, 2000);
+            });
+            
+            // Currency Recognition
+            const startCurrencyDetectionBtn = document.getElementById('start-currency-detection');
+            const captureCurrencyBtn = document.getElementById('capture-currency');
+            const currencyVideo = document.getElementById('currency-video');
+            const currencyOverlay = document.getElementById('currency-overlay');
+            const currencyValue = document.getElementById('currency-value');
+            const currencyConfidence = document.getElementById('currency-confidence');
+            const confidencePercentage = document.getElementById('confidence-percentage');
+            
+            startCurrencyDetectionBtn.addEventListener('click', () => {
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(stream => {
+                            currencyVideo.srcObject = stream;
+                            startCurrencyDetectionBtn.disabled = true;
+                            captureCurrencyBtn.disabled = false;
+                        })
+                        .catch(err => {
+                            console.error('Error accessing camera: ', err);
+                            currencyValue.textContent = 'خطأ في الوصول إلى الكاميرا. يرجى التأكد من السماح بالوصول.';
+                        });
+                } else {
+                    currencyValue.textContent = 'عذراً، متصفحك لا يدعم الوصول إلى الكاميرا.';
+                }
+            });
+            
+            captureCurrencyBtn.addEventListener('click', () => {
+                // Simulate currency detection
+                currencyOverlay.innerHTML = '<div class="currency-detection-box"></div>';
+                
+                setTimeout(() => {
+                    // Random currency detection
+                    const currencies = [
+                        { value: 'مائة جنيه مصري', confidence: 0.95 },
+                        { value: 'خمسون جنيه مصري', confidence: 0.87 },
+                        { value: 'عشرون جنيه مصري', confidence: 0.92 },
+                        { value: 'مائتان جنيه مصري', confidence: 0.89 }
+                    ];
+                    
+                    const detectedCurrency = currencies[Math.floor(Math.random() * currencies.length)];
+                    
+                    currencyValue.textContent = detectedCurrency.value;
+                    currencyConfidence.style.width = `${detectedCurrency.confidence * 100}%`;
+                    confidencePercentage.textContent = `${Math.round(detectedCurrency.confidence * 100)}%`;
+                    
+                    // Read the currency value aloud
+                    if ('speechSynthesis' in window) {
+                        const utterance = new SpeechSynthesisUtterance(`تم اكتشاف ${detectedCurrency.value} بنسبة ثقة ${Math.round(detectedCurrency.confidence * 100)}%`);
+                        utterance.lang = 'ar-SA';
+                        window.speechSynthesis.speak(utterance);
+                    }
+                }, 1000);
+            });
+            
+            // Voice Keyboard
+            const startVoiceKeyboardBtn = document.getElementById('start-voice-keyboard');
+            const stopVoiceKeyboardBtn = document.getElementById('stop-voice-keyboard');
+            const clearVoiceKeyboardBtn = document.getElementById('clear-voice-keyboard');
+            const voiceKeyboardOutput = document.getElementById('voice-keyboard-output');
+            const wordSuggestions = document.getElementById('word-suggestions');
+            
+            let voiceKeyboardRecognition;
+            
+            startVoiceKeyboardBtn.addEventListener('click', () => {
+                if ('webkitSpeechRecognition' in window) {
+                    voiceKeyboardRecognition = new webkitSpeechRecognition();
+                    voiceKeyboardRecognition.lang = 'ar-SA';
+                    voiceKeyboardRecognition.continuous = true;
+                    voiceKeyboardRecognition.interimResults = true;
+                    
+                    startVoiceKeyboardBtn.disabled = true;
+                    stopVoiceKeyboardBtn.disabled = false;
+                    
+                    voiceKeyboardRecognition.onresult = (event) => {
+                        let interimTranscript = '';
+                        let finalTranscript = '';
+                        
+                        for (let i = event.resultIndex; i < event.results.length; ++i) {
+                            if (event.results[i].isFinal) {
+                                finalTranscript += event.results[i][0].transcript;
+                            } else {
+                                interimTranscript += event.results[i][0].transcript;
+                            }
+                        }
+                        
+                        voiceKeyboardOutput.value = finalTranscript + interimTranscript;
+                        
+                        // Generate word suggestions
+                        generateWordSuggestions(interimTranscript || finalTranscript);
+                    };
+                    
+                    voiceKeyboardRecognition.onerror = (event) => {
+                        console.error('Voice recognition error:', event.error);
+                    };
+                    
+                    voiceKeyboardRecognition.start();
+                } else {
+                    voiceKeyboardOutput.value = 'عذراً، متصفحك لا يدعم خاصية التعرف على الصوت.';
+                }
+            });
+            
+            stopVoiceKeyboardBtn.addEventListener('click', () => {
+                if (voiceKeyboardRecognition) {
+                    voiceKeyboardRecognition.stop();
+                }
+                
+                startVoiceKeyboardBtn.disabled = false;
+                stopVoiceKeyboardBtn.disabled = true;
+            });
+            
+            clearVoiceKeyboardBtn.addEventListener('click', () => {
+                voiceKeyboardOutput.value = '';
+                generateWordSuggestions('');
+            });
+            
+            function generateWordSuggestions(text) {
+                if (!text) {
+                    wordSuggestions.innerHTML = `
+                        <span class="suggestion">سيتم</span>
+                        <span class="suggestion">عرض</span>
+                        <span class="suggestion">الاقتراحات</span>
+                        <span class="suggestion">هنا</span>
+                    `;
+                    return;
+                }
+                
+                const words = text.trim().split(/\s+/);
+                const lastWord = words[words.length - 1];
+                
+                // Generate suggestions based on the last word
+                const suggestionsList = getSuggestions(lastWord);
+                
+                wordSuggestions.innerHTML = suggestionsList.map(suggestion => 
+                    `<span class="suggestion">${suggestion}</span>`
+                ).join('');
+                
+                // Add click event to suggestions
+                document.querySelectorAll('.suggestion').forEach(suggestionSpan => {
+                    suggestionSpan.addEventListener('click', () => {
+                        // Replace the last word with the suggestion
+                        words[words.length - 1] = suggestionSpan.textContent;
+                        voiceKeyboardOutput.value = words.join(' ');
+                    });
+                });
+            }
+            
+            function getSuggestions(word) {
+                // Simple word suggestions based on common Arabic words
+                const suggestions = [
+                    'القادرون', 'المساعدة', 'الدعم', 'التطبيق', 'الخدمات',
+                    'المجتمع', 'العمل', 'النجاح', 'التحدي', 'الإنجاز',
+                    'المستقبل', 'الأمل', 'الحياة', 'التقدم', 'الإرادة'
+                ];
+                
+                if (!word) return suggestions.slice(0, 4);
+                
+                // Filter suggestions that start with the given word
+                const filtered = suggestions.filter(s => s.startsWith(word));
+                
+                // If no matches, return random suggestions
+                if (filtered.length === 0) {
+                    return suggestions.sort(() => 0.5 - Math.random()).slice(0, 4);
+                }
+                
+                // Return up to 4 matches
+                return filtered.slice(0, 4);
+            }
+            
+            // Voice Browser
+            const startVoiceBrowsingBtn = document.getElementById('start-voice-browsing');
+            const voiceBrowserStatus = document.getElementById('voice-browser-status');
+            const voiceBrowserUrl = document.getElementById('voice-browser-url');
+            const voiceBrowserContent = document.getElementById('voice-browser-content');
+            
+            startVoiceBrowsingBtn.addEventListener('click', () => {
+                if ('webkitSpeechRecognition' in window) {
+                    const recognition = new webkitSpeechRecognition();
+                    recognition.lang = 'ar-SA';
+                    recognition.continuous = false;
+                    
+                    voiceBrowserStatus.textContent = 'أنا أستمع، قل أمرك...';
+                    
+                    recognition.onresult = (event) => {
+                        const command = event.results[0][0].transcript;
+                        handleBrowserCommand(command);
+                    };
+                    
+                    recognition.onend = () => {
+                        setTimeout(() => {
+                            recognition.start();
+                        }, 1000);
+                    };
+                    
+                    recognition.start();
+                } else {
+                    voiceBrowserStatus.textContent = 'عذراً، متصفحك لا يدعم خاصية التعرف على الصوت.';
+                }
+            });
+            
+            function handleBrowserCommand(command) {
+                voiceBrowserStatus.textContent = `الأمر: ${command}`;
+                
+                if (command.includes('افتح') || command.includes('انتقل')) {
+                    const pageNames = {
+                        'الرئيسية': 'الصفحة الرئيسية - قادرون',
+                        'الإعاقة البصرية': 'قسم الإعاقة البصرية - قادرون',
+                        'الإعاقة السمعية': 'قسم الإعاقة السمعية - قادرون',
+                        'الإعاقة الحركية': 'قسم الإعاقة الحركية - قادرون'
+                    };
+                    
+                    for (const [keyword, pageName] of Object.entries(pageNames)) {
+                        if (command.includes(keyword)) {
+                            navigateToPage(keyword, pageName);
+                            return;
+                        }
+                    }
+                }
+                else if (command.includes('ارجع') || command.includes('الصفحة السابقة')) {
+                    voiceBrowserUrl.textContent = 'الصفحة السابقة - قادرون';
+                    voiceBrowserContent.innerHTML = `
+                        <div class="placeholder-content">
+                            <h3>تم الرجوع للصفحة السابقة</h3>
+                            <p>هذه محاكاة للتصفح الصوتي</p>
+                        </div>
+                    `;
+                    speakBrowserResponse('تم الرجوع إلى الصفحة السابقة');
+                }
+                else if (command.includes('ابحث عن')) {
+                    const searchTerm = command.replace('ابحث عن', '').trim();
+                    if (searchTerm) {
+                        voiceBrowserUrl.textContent = `بحث: ${searchTerm} - قادرون`;
+                        voiceBrowserContent.innerHTML = `
+                            <div class="placeholder-content">
+                                <h3>نتائج البحث عن: ${searchTerm}</h3>
+                                <ul>
+                                    <li>نتيجة البحث الأولى عن ${searchTerm}</li>
+                                    <li>نتيجة البحث الثانية عن ${searchTerm}</li>
+                                    <li>نتيجة البحث الثالثة عن ${searchTerm}</li>
+                                </ul>
+                            </div>
+                        `;
+                        speakBrowserResponse(`إليك نتائج البحث عن ${searchTerm}`);
+                    }
+                }
+                else if (command.includes('اضغط على') || command.includes('انقر على')) {
+                    const elementName = command.replace('اضغط على', '').replace('انقر على', '').trim();
+                    voiceBrowserStatus.textContent = `تم النقر على العنصر: ${elementName}`;
+                    speakBrowserResponse(`تم النقر على ${elementName}`);
+                }
+                else {
+                    speakBrowserResponse('عذراً، لم أفهم الأمر. يمكنك قول: افتح الصفحة الرئيسية، ارجع للصفحة السابقة، ابحث عن موضوع...');
+                }
+            }
+            
+            function navigateToPage(pageName, pageTitle) {
+                voiceBrowserUrl.textContent = pageTitle;
+                
+                let content = '';
+                
+                switch(pageName) {
+                    case 'الرئيسية':
+                        content = `
+                            <div class="placeholder-content">
+                                <h3>الصفحة الرئيسية</h3>
+                                <p>مرحباً بك في قادرون - منصة دعم وتمكين ذوي الاحتياجات الخاصة</p>
+                                <ul>
+                                    <li>دعم الإعاقة البصرية</li>
+                                    <li>دعم الإعاقة السمعية</li>
+                                    <li>دعم الإعاقة الحركية</li>
+                                    <li>دكتورك الذكي</li>
+                                </ul>
+                            </div>
+                        `;
+                        break;
+                    case 'الإعاقة البصرية':
+                        content = `
+                            <div class="placeholder-content">
+                                <h3>قسم الإعاقة البصرية</h3>
+                                <p>خدمات متكاملة للدعم البصري</p>
+                                <ul>
+                                    <li>المساعد الشخصي الصوتي</li>
+                                    <li>كاميرا ذكية</li>
+                                    <li>تحويل الصور إلى صوت</li>
+                                    <li>لوحة مفاتيح صوتية</li>
+                                </ul>
+                            </div>
+                        `;
+                        break;
+                    case 'الإعاقة السمعية':
+                        content = `
+                            <div class="placeholder-content">
+                                <h3>قسم الإعاقة السمعية</h3>
+                                <p>حلول متكاملة للتواصل والتمكين</p>
+                                <ul>
+                                    <li>مترجم لغة الإشارة</li>
+                                    <li>نظارات الواقع المعزز</li>
+                                    <li>ساعة ذكية للاهتزازات</li>
+                                    <li>لوحة تواصل ذكية</li>
+                                </ul>
+                            </div>
+                        `;
+                        break;
+                    case 'الإعاقة الحركية':
+                        content = `
+                            <div class="placeholder-content">
+                                <h3>قسم الإعاقة الحركية</h3>
+                                <p>حلول متكاملة للتمكين والاستقلالية</p>
+                                <ul>
+                                    <li>التحكم بالأجهزة الإلكترونية</li>
+                                    <li>تدريب معرفي وإدراكي</li>
+                                    <li>إدارة الأدوية والتذكير</li>
+                                    <li>المساعد الذكي</li>
+                                </ul>
+                            </div>
+                        `;
+                        break;
+                }
+                
+                voiceBrowserContent.innerHTML = content;
+                speakBrowserResponse(`تم الانتقال إلى صفحة ${pageName}`);
+            }
+            
+            function speakBrowserResponse(text) {
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'ar-SA';
+                    window.speechSynthesis.speak(utterance);
+                }
+            }
+            
+            // Digital Braille Test
+            const brailleCells = document.getElementById('braille-cells');
+            const convertToBrailleBtn = document.getElementById('convert-to-braille');
+            const brailleFile = document.getElementById('braille-file');
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            
+            // Braille patterns for Arabic letters (simplified for demonstration)
+            const braillePatterns = {
+                'أ': [[true, false, false, false, false, false]],
+                'ب': [[true, true, false, false, false, false]],
+                'ت': [[true, false, true, false, false, false]],
+                'ث': [[true, false, true, true, false, false]]
+            };
+            
+            let currentQuizLetter = 'أ';
+            
+            function updateBrailleDisplay(letter) {
+                if (!braillePatterns[letter]) return;
+                
+                const pattern = braillePatterns[letter][0];
+                const dots = document.querySelectorAll('.braille-cell:first-child .braille-dot');
+                
+                dots.forEach((dot, index) => {
+                    dot.setAttribute('data-active', pattern[index] ? 'true' : 'false');
+                });
+            }
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const selectedLetter = option.textContent;
+                    
+                    quizOptions.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+                    
+                    if (selectedLetter === currentQuizLetter) {
+                        option.classList.add('correct');
+                        // Move to next quiz question after delay
+                        setTimeout(() => {
+                            const letters = Object.keys(braillePatterns);
+                            currentQuizLetter = letters[Math.floor(Math.random() * letters.length)];
+                            updateBrailleDisplay(currentQuizLetter);
+                        }, 1000);
+                    } else {
+                        option.classList.add('incorrect');
+                    }
+                });
+            });
+            
+            convertToBrailleBtn.addEventListener('click', () => {
+                if (!brailleFile.files.length) {
+                    alert('يرجى اختيار ملف أولاً');
+                    return;
+                }
+                
+                const file = brailleFile.files[0];
+                const fileExtension = file.name.split('.').pop().toLowerCase();
+                
+                if (!['pdf', 'doc', 'docx'].includes(fileExtension)) {
+                    alert('يرجى اختيار ملف PDF أو Word فقط');
+                    return;
+                }
+                
+                // Simulate conversion
+                convertToBrailleBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحويل...';
+                
+                setTimeout(() => {
+                    convertToBrailleBtn.innerHTML = 'تحويل إلى برايل';
+                    
+                    // Generate random braille cells
+                    let cellsHTML = '';
+                    for (let i = 0; i < 10; i++) {
+                        cellsHTML += `
+                            <div class="braille-cell">
+                                ${Array(6).fill().map(() => `<div class="braille-dot" data-active="${Math.random() > 0.5}"></div>`).join('')}
+                            </div>
+                        `;
+                    }
+                    
+                    brailleCells.innerHTML = cellsHTML;
+                    
+                    alert('تم تحويل الملف إلى برايل بنجاح');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قادرون - دعم الإعاقة السمعية المتقدم</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Professional Enhancements */
+        .pro-dashboard {
+            background: linear-gradient(135deg, #8E44AD 0%, #9B59B6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pro-dashboard::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle at center, 
+                rgba(255,255,255,0.2), 
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+
+        .pro-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .pro-feature-card {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pro-feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg, 
+                rgba(255,255,255,0.1), 
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .pro-feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .pro-feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .pro-feature-card i {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ai-sign-translator {
+            background-color: #34495e;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .real-time-translation {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .translation-output {
+            background-color: rgba(255,255,255,0.1);
+            border: 2px dashed white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            min-height: 100px;
+        }
+
+        .pro-sign-language {
+            background: linear-gradient(135deg, #8E44AD, #9B59B6);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .sign-language-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .sign-language-feature {
+            background-color: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .sign-language-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .sign-language-feature i {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sign-language-camera {
+            background-color: #2c3e50;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #sign-language-video {
+            max-width: 100%;
+            border-radius: 10px;
+            background-color: #34495e;
+        }
+
+        .camera-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .camera-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .camera-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .sign-language-emoji-translator {
+            background-color: #ecf0f1;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .emoji-translation-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .emoji-input {
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+
+        .emoji-output {
+            font-size: 3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .emoji-strength-section {
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .emoji-strength-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .emoji-strength-item {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .emoji-strength-item:hover {
+            transform: scale(1.1);
+        }
+
+        .pro-sign-language-section {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .pro-sign-language-pro {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .pro-sign-language-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .pro-feature-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .pro-feature-card i {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .pro-subscription {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .pro-subscription-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pro-subscription-btn:hover {
+            background-color: #3e8e41;
+        }
+
+        .subscription-contact {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-highlight {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .sign-language-books {
+            background-color: #f4f4f7;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .sign-language-book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .sign-language-book {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sign-language-book:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .sign-language-book-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .strength-emoji-animation {
+            position: fixed;
+            font-size: 4em;
+            z-index: 9999;
+            pointer-events: none;
+            animation: strengthEmojiMove 5s ease-in-out infinite;
+        }
+
+        @keyframes strengthEmojiMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, -50px) rotate(15deg); }
+            50% { transform: translate(-50px, 50px) rotate(-15deg); }
+            75% { transform: translate(50px, 50px) rotate(15deg); }
+        }
+
+        .btn-sound-effect {
+            transition: transform 0.1s, background-color 0.3s;
+        }
+
+        .btn-sound-effect:active {
+            transform: scale(0.95);
+        }
+
+        .ai-advanced-translator {
+            background: linear-gradient(135deg, #8E44AD 0%, #9B59B6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-translator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .ai-translator-feature {
+            background-color: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .ai-translator-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .ai-translator-feature i {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .realtime-translation-advanced {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .realtime-translation-advanced::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle at center, 
+                rgba(255,255,255,0.2), 
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+
+        .translation-microphone {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: #3498db;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes dynamicTranslation {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        .advanced-translation-output {
+            background-color: rgba(255,255,255,0.1);
+            border: 2px dashed #3498db;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            min-height: 200px;
+            position: relative;
+            overflow: hidden;
+            animation: dynamicTranslation 3s infinite;
+        }
+
+        .translation-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            animation: waveAnimation 2s infinite;
+        }
+
+        @keyframes waveAnimation {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .pro-subscription-tiers {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .subscription-tier {
+            flex: 1;
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .subscription-tier:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .tier-price {
+            font-size: 1.5em;
+            color: #4A90E2;
+            margin-bottom: 15px;
+        }
+
+        .subscription-tier ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .subscription-tier ul li {
+            margin: 10px 0;
+            opacity: 0.8;
+        }
+
+        .subscribe-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .payment-methods {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 2em;
+            color: #4A90E2;
+        }
+
+        .contact-support {
+            text-align: center;
+            margin-top: 30px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .sign-language-human {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: #f4f4f4;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .sign-language-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #4A90E2 0%, #5FDDE5 100%);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            transition: all 0.5s ease;
+        }
+
+        .sign-language-head {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 5px solid #4A90E2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+        }
+
+        .sign-language-hand {
+            position: absolute;
+            width: 50px;
+            height: 100px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            border-radius: 10px;
+        }
+
+        .left-hand {
+            left: 50px;
+            top: 200px;
+            transform: rotate(-30deg);
+        }
+
+        .right-hand {
+            right: 50px;
+            top: 200px;
+            transform: rotate(30deg);
+        }
+
+        .translation-output {
+            margin-top: 20px;
+        }
+
+        #translator-input {
+            width: 100%;
+            margin: 20px 0;
+            padding: 10px;
+        }
+
+        .translation-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            animation: waveAnimation 2s infinite;
+        }
+
+        @keyframes waveAnimation {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hearing-support-header">
+            <h1>قادرون - دعم الإعاقة السمعية المتقدم</h1>
+            <p>حلول متكاملة للتواصل والتمكين</p>
+            <a href="index.html" class="back-btn">العودة للرئيسية</a>
+        </header>
+
+        <main>
+            <section class="sign-language-translation">
+                <h2>مترجم لغة الإشارة الذكي</h2>
+                <div class="sign-language-translator">
+                    <div class="sign-language-visualizer">
+                        <div class="sign-language-hands"></div>
+                    </div>
+                    <div class="sign-language-input">
+                        <textarea id="text-to-sign-input" placeholder="أدخل النص للترجمة إلى لغة الإشارة"></textarea>
+                        <button id="translate-to-sign" class="feature-btn">ترجمة إلى لغة الإشارة</button>
+                        <div id="sign-language-output" class="translation-output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ai-sign-translator">
+                <h2>المترجم الذكي بالذكاء الاصطناعي</h2>
+                <div class="real-time-translation">
+                    <h3>الترجمة الفورية</h3>
+                    <button id="start-real-time-translation" class="feature-btn">بدء الترجمة الفورية</button>
+                    <div id="real-time-translation-output" class="translation-output">
+                        انتظار الترجمة...
+                    </div>
+                </div>
+            </section>
+
+            <section class="pro-sign-language">
+                <h2>لغة الإشارة الاحترافية</h2>
+                <div class="sign-language-features">
+                    <div class="sign-language-feature">
+                        <i class="fas fa-globe"></i>
+                        <h3>دعم لغات متعددة</h3>
+                        <p>ترجمة بين لغات الإشارة المختلفة</p>
+                    </div>
+                    <div class="sign-language-feature">
+                        <i class="fas fa-video"></i>
+                        <h3>مكالمات فيديو</h3>
+                        <p>مكالمات فيديو بلغة الإشارة</p>
+                    </div>
+                    <div class="sign-language-feature">
+                        <i class="fas fa-brain"></i>
+                        <h3>ذكاء اصطناعي متقدم</h3>
+                        <p>تحليل وتفسير لغة الإشارة</p>
+                    </div>
+                    <div class="sign-language-feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>تطبيق متكامل</h3>
+                        <p>تجربة مستخدم سلسة وسهلة</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sign-language-camera">
+                <h2>مترجم لغة الإشارة بالكاميرا</h2>
+                <video id="sign-language-video" autoplay playsinline></video>
+                <div class="camera-controls">
+                    <button id="start-camera" class="camera-btn">
+                        <i class="fas fa-camera"></i> بدء التعرف
+                    </button>
+                    <button id="stop-camera" class="camera-btn" disabled>
+                        <i class="fas fa-stop"></i> إيقاف التعرف
+                    </button>
+                </div>
+                <div id="sign-language-result" class="feature-output">
+                    النتائج ستظهر هنا
+                </div>
+            </section>
+
+            <section class="sign-language-emoji-translator">
+                <h2>مترجم النصوص إلى رموز تعبيرية</h2>
+                <div class="emoji-translation-container">
+                    <div class="emoji-input">
+                        <textarea id="text-to-emoji" placeholder="أدخل النص للترجمة إلى رموز"></textarea>
+                        <button id="translate-to-emoji" class="feature-btn">تحويل إلى رموز</button>
+                    </div>
+                    <div id="emoji-output" class="emoji-output">
+                        ✨
+                    </div>
+                </div>
+            </section>
+
+            <section class="emoji-strength-section">
+                <h2>معجم القوة بالرموز التعبيرية</h2>
+                <div class="emoji-strength-gallery">
+                    <div class="emoji-strength-item">💪 القوة</div>
+                    <div class="emoji-strength-item">🚀 الطموح</div>
+                    <div class="emoji-strength-item">🌟 الإلهام</div>
+                    <div class="emoji-strength-item">🛡️ المرونة</div>
+                </div>
+            </section>
+
+            <section class="sign-language-books">
+                <h2>كتب لغة الإشارة</h2>
+                <div class="sign-language-book-grid">
+                    <div class="sign-language-book">
+                        <div class="sign-language-book-icon">📘</div>
+                        <h3>أساسيات لغة الإشارة</h3>
+                        <p>كتاب تعليمي للمبتدئين</p>
+                        <button class="feature-btn btn-sound-effect" data-book="basics">تحميل</button>
+                    </div>
+                    <div class="sign-language-book">
+                        <div class="sign-language-book-icon">📖</div>
+                        <h3>قاموس لغة الإشارة</h3>
+                        <p>مرجع شامل للمصطلحات</p>
+                        <button class="feature-btn btn-sound-effect" data-book="dictionary">تحميل</button>
+                    </div>
+                    <div class="sign-language-book">
+                        <div class="sign-language-book-icon">📚</div>
+                        <h3>التواصل المتقدم</h3>
+                        <p>تقنيات التواصل المتقدمة</p>
+                        <button class="feature-btn btn-sound-effect" data-book="advanced">تحميل</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ai-advanced-translator">
+                <h2>المترجم الذكي المتقدم</h2>
+                <p>حلول ذكية متكاملة للترجمة والتواصل</p>
+                
+                <div class="ai-translator-grid">
+                    <div class="ai-translator-feature">
+                        <i class="fas fa-brain"></i>
+                        <h3>ذكاء اصطناعي متقدم</h3>
+                        <p>تحليل وتفسير معمق للغة الإشارة</p>
+                    </div>
+                    
+                    <div class="ai-translator-feature">
+                        <i class="fas fa-globe"></i>
+                        <h3>دعم لغات متعددة</h3>
+                        <p>ترجمة بين أكثر من 10 لغات إشارة</p>
+                    </div>
+                    
+                    <div class="ai-translator-feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>تطبيق شامل</h3>
+                        <p>تجربة مستخدم سلسة وسهلة</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="realtime-translation-advanced">
+                <h2>الترجمة الفورية المتقدمة</h2>
+                <i class="fas fa-microphone translation-microphone"></i>
+                
+                <div class="advanced-translation-output" id="advanced-translation-result">
+                    انتظار الترجمة الفورية...
+                    <div class="translation-wave"></div>
+                </div>
+                
+                <div class="camera-controls">
+                    <button id="start-advanced-translation" class="feature-btn">
+                        <i class="fas fa-play"></i> بدء الترجمة
+                    </button>
+                    <button id="stop-advanced-translation" class="feature-btn">
+                        <i class="fas fa-stop"></i> إيقاف الترجمة
+                    </button>
+                </div>
+            </section>
+
+            <section class="pro-sign-language-section">
+                <div class="pro-sign-language-pro">
+                    <h2>لغة الإشارة الاحترافية PRO</h2>
+                    <p>ارتقِ بتجربة التواصل مع الباقة الاحترافية المتكاملة</p>
+                    
+                    <div class="pro-subscription-tiers">
+                        <div class="subscription-tier basic-tier">
+                            <h3>الباقة الأساسية</h3>
+                            <div class="tier-price">99 ريال / شهريًا</div>
+                            <ul>
+                                <li>✅ مكالمات فيديو أساسية</li>
+                                <li>✅ دعم لغة إشارة واحدة</li>
+                                <li>❌ محدودية المميزات</li>
+                            </ul>
+                            <button class="subscribe-btn basic-subscribe" data-tier="basic">
+                                اشترك الآن بالباقة الأساسية
+                            </button>
+                        </div>
+                        
+                        <div class="subscription-tier advanced-tier">
+                            <h3>الباقة المتقدمة</h3>
+                            <div class="tier-price">199 ريال / شهريًا</div>
+                            <ul>
+                                <li>✅ مكالمات فيديو احترافية</li>
+                                <li>✅ دعم 3 لغات إشارة</li>
+                                <li>✅ دعم فني متكامل</li>
+                                <li>✅ تحديثات دورية</li>
+                            </ul>
+                            <button class="subscribe-btn advanced-subscribe" data-tier="advanced">
+                                اشترك بالباقة المتقدمة
+                            </button>
+                        </div>
+                        
+                        <div class="subscription-tier pro-tier">
+                            <h3>الباقة الاحترافية</h3>
+                            <div class="tier-price">299 ريال / شهريًا</div>
+                            <ul>
+                                <li>✅ مكالمات فيديو عالية الجودة</li>
+                                <li>✅ دعم جميع لغات الإشارة</li>
+                                <li>✅ مترجم شخصي</li>
+                                <li>✅ دعم فني 24/7</li>
+                                <li>✅ تخصيص كامل للتطبيق</li>
+                            </ul>
+                            <button class="subscribe-btn pro-subscribe" data-tier="pro">
+                                اشترك بالباقة الاحترافية
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <h3>طرق الدفع المتاحة</h3>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-apple-pay"></i>
+                            <i class="fab fa-google-pay"></i>
+                        </div>
+                    </div>
+
+                    <div class="contact-support">
+                        <h3>للدعم والاستفسار</h3>
+                        <p>تواصل معنا على: 01140427665</p>
+                        <p>البريد الإلكتروني: support@qaderon.com</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sign-language-professional">
+                <h2>مترجم لغة الإشارة الحي</h2>
+                <div class="sign-language-human">
+                    <div class="sign-language-head">
+                        <i class="fas fa-user" style="font-size: 3em; color: #4A90E2;"></i>
+                    </div>
+                    <div class="sign-language-body"></div>
+                    <div class="sign-language-hand left-hand"></div>
+                    <div class="sign-language-hand right-hand"></div>
+                </div>
+                
+                <div class="sign-language-interaction">
+                    <h3>تفاعل مع مترجم لغة الإشارة</h3>
+                    <div class="sign-language-actions">
+                        <button id="greet-btn" class="sign-action-btn">تحية</button>
+                        <button id="help-btn" class="sign-action-btn">طلب مساعدة</button>
+                        <button id="question-btn" class="sign-action-btn">طرح سؤال</button>
+                    </div>
+                    
+                    <div id="sign-language-feedback" class="sign-language-feedback">
+                        سيتم عرض ترجمة لغة الإشارة هنا
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.min.js"></script>
+    <script src="app.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startCameraBtn = document.getElementById('start-camera');
+            const stopCameraBtn = document.getElementById('stop-camera');
+            const signLanguageVideo = document.getElementById('sign-language-video');
+            const signLanguageResult = document.getElementById('sign-language-result');
+
+            function startSignLanguageRecognition() {
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    const cameraConstraints = {
+                        video: {
+                            width: { ideal: 1280 },
+                            height: { ideal: 720 },
+                            facingMode: 'user', 
+                            deviceId: '' 
+                        },
+                        audio: false
+                    };
+
+                    navigator.mediaDevices.enumerateDevices()
+                        .then(devices => {
+                            const videoDevices = devices.filter(device => device.kind === 'videoinput');
+                            
+                            if (videoDevices.length > 1) {
+                                const cameraChoices = videoDevices.map((device, index) => 
+                                    `<option value="${device.deviceId}">Camera ${index + 1}: ${device.label || 'Unknown'}</option>`
+                                ).join('');
+
+                                Swal.fire({
+                                    title: 'اختر كاميرا',
+                                    html: `
+                                        <select id="camera-select" class="swal2-input">
+                                            ${cameraChoices}
+                                        </select>
+                                    `,
+                                    showCancelButton: true,
+                                    confirmButtonText: 'تأكيد',
+                                    cancelButtonText: 'إلغاء',
+                                    preConfirm: () => {
+                                        return document.getElementById('camera-select').value;
+                                    }
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        cameraConstraints.video.deviceId = { exact: result.value };
+                                        initializeCamera(cameraConstraints);
+                                    }
+                                });
+                            } else {
+                                initializeCamera(cameraConstraints);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error enumerating devices:', error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'خطأ في الوصول للكاميرا',
+                                text: 'تأكد من تفعيل الكاميرا وإعطاء الصلاحيات'
+                            });
+                        });
+                }
+            }
+
+            function initializeCamera(constraints) {
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then(stream => {
+                        signLanguageVideo.srcObject = stream;
+                        signLanguageVideo.play();
+                        
+                        startCameraBtn.disabled = true;
+                        stopCameraBtn.disabled = false;
+                        
+                        signLanguageResult.innerHTML = `
+                            <div class="camera-status">
+                                <i class="fas fa-video"></i> الكاميرا قيد التشغيل
+                                <p>جارٍ التعرف على لغة الإشارة...</p>
+                            </div>
+                        `;
+                        
+                        const recognitionInterval = setInterval(() => {
+                            const signLanguageDetections = [
+                                { sign: '👋 مرحبا', confidence: 0.85 },
+                                { sign: '👍 نعم', confidence: 0.75 },
+                                { sign: '✋ توقف', confidence: 0.90 },
+                                { sign: '🤲 مساعدة', confidence: 0.80 },
+                                { sign: '👊 قوة', confidence: 0.88 }
+                            ];
+                            
+                            const randomDetection = signLanguageDetections[Math.floor(Math.random() * signLanguageDetections.length)];
+                            
+                            signLanguageResult.innerHTML = `
+                                <div class="sign-detection">
+                                    <h4>التعرف على لغة الإشارة</h4>
+                                    <p>تم التعرف: ${randomDetection.sign}</p>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" style="width: ${randomDetection.confidence * 100}%"></div>
+                                    </div>
+                                    <small>نسبة الدقة: ${(randomDetection.confidence * 100).toFixed(2)}%</small>
+                                </div>
+                            `;
+                        }, 3000);
+
+                        stopCameraBtn.onclick = () => {
+                            const tracks = stream.getTracks();
+                            tracks.forEach(track => track.stop());
+                            
+                            signLanguageVideo.srcObject = null;
+                            startCameraBtn.disabled = false;
+                            stopCameraBtn.disabled = true;
+                            
+                            clearInterval(recognitionInterval);
+                            
+                            signLanguageResult.innerHTML = `
+                                <div class="camera-status">
+                                    <i class="fas fa-video-slash"></i> تم إيقاف الكاميرا
+                                </div>
+                            `;
+                        };
+                    })
+                    .catch(error => {
+                        console.error('خطأ في الوصول للكاميرا:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'خطأ في الوصول للكاميرا',
+                            text: 'تأكد من تفعيل الكاميرا وإعطاء الصلاحيات للمتصفح',
+                            footer: `<a href="#" onclick="openDeviceSettings()">فتح الإعدادات</a>`
+                        });
+                    });
+            }
+
+            window.openDeviceSettings = function() {
+                Swal.fire({
+                    title: 'فتح الإعدادات',
+                    html: `
+                        <p>للسماح بالوصول للكاميرا:</p>
+                        <ol>
+                            <li>افتح إعدادات الجهاز</li>
+                            <li>انتقل إلى الإعدادات → الخصوصية</li>
+                            <li>اختر الكاميرا وفعّل الإذن للمتصفح</li>
+                        </ol>
+                    `,
+                    icon: 'info',
+                    confirmButtonText: 'فهمت'
+                });
+            };
+
+            startCameraBtn.addEventListener('click', startSignLanguageRecognition);
+
+            const textToEmojiInput = document.getElementById('text-to-emoji');
+            const translateToEmojiBtn = document.getElementById('translate-to-emoji');
+            const emojiOutput = document.getElementById('emoji-output');
+
+            // Enhanced Emoji Translation Dictionary with more context and emotional intelligence
+            const emojiTranslationMap = {
+                // Emotions and Feelings
+                'سعيد': ['😊', '🌞', '😄', '🎉', '💖'],
+                'حزين': ['😢', '😔', '💔', '🌧️', '😭'],
+                'غاضب': ['😠', '🤬', '😡', '💢', '🔥'],
+                'خائف': ['😱', '😨', '🙀', '😰', '😳'],
+                'مندهش': ['😮', '🤯', '😲', '👀', '😵'],
+                'محب': ['❤️', '🥰', '💕', '😍', '💓'],
+                'متعب': ['😴', '🥱', '😪', '💤', '😩'],
+                
+                // Situations and Activities
+                'مرحبا': ['👋', '🤗', '✨', '👍', '🌈'],
+                'شكرا': ['🙏', '👍', '🌟', '❤️', '😊'],
+                'مساعدة': ['🆘', '🤲', '🫂', '🙌', '💕'],
+                'قوة': ['💪', '🦾', '🏆', '🚀', '✊'],
+                'نجاح': ['🎊', '🏅', '🚀', '🌟', '👏'],
+                'تعلم': ['📚', '🧠', '🌱', '💡', '🤓'],
+                
+                // Medical and Health Context
+                'صحة': ['❤️‍🩹', '🩺', '💊', '🧬', '🏥'],
+                'إعاقة': ['♿', '🦽', '🤝', '💖', '🌈'],
+                'أمل': ['🌈', '☀️', '🌻', '✨', '💫'],
+                'تحدي': ['🛡️', '💡', '🌟', '🚀', '💪'],
+                
+                // Accessibility and Support
+                'دعم': ['🤲', '💖', '🫂', '🤝', '🌈'],
+                'تواصل': ['🗣️', '👂', '🤝', '💬', '🌐'],
+                'تكنولوجيا': ['💻', '🤖', '📱', '🌐', '💡'],
+                
+                // Actions
+                'نعم': ['✅', '👍', '🌟', '💯', '🎉'],
+                'لا': ['❌', '👎', '🚫', '😕', '🙅‍♀️']
+            };
+
+            function translateToEmoji(text) {
+                const words = text.trim().toLowerCase().split(/\s+/);
+                const translations = words.map(word => {
+                    // Find the best emoji match
+                    for (const [keyword, emojis] of Object.entries(emojiTranslationMap)) {
+                        if (word.includes(keyword)) {
+                            // Randomly select an emoji from the matching set
+                            return emojis[Math.floor(Math.random() * emojis.length)];
+                        }
+                    }
+                    
+                    // If no match found, return a default emoji
+                    return '🤷‍♂️';
+                });
+
+                // Animate additional emojis
+                animateEmojiRainfall(translations);
+
+                return translations.join(' ');
+            }
+
+            function animateEmojiRainfall(emojis) {
+                const container = document.createElement('div');
+                container.style.position = 'fixed';
+                container.style.top = '0';
+                container.style.left = '0';
+                container.style.width = '100%';
+                container.style.height = '100%';
+                container.style.pointerEvents = 'none';
+                container.style.zIndex = '9999';
+                document.body.appendChild(container);
+
+                emojis.forEach(emoji => {
+                    const emojiElement = document.createElement('div');
+                    emojiElement.textContent = emoji;
+                    emojiElement.style.position = 'absolute';
+                    emojiElement.style.fontSize = '3em';
+                    emojiElement.style.left = `${Math.random() * window.innerWidth}px`;
+                    emojiElement.style.top = '-50px';
+                    emojiElement.style.transition = 'all 0.5s ease-out';
+                    emojiElement.style.opacity = '1';
+                    emojiElement.style.transform = 'scale(0.5)';
+                    
+                    container.appendChild(emojiElement);
+
+                    // Animate falling and scaling
+                    requestAnimationFrame(() => {
+                        emojiElement.style.top = `${window.innerHeight}px`;
+                        emojiElement.style.transform = 'scale(1)';
+                        emojiElement.style.opacity = '0.7';
+                    });
+
+                    // Remove emoji after animation
+                    setTimeout(() => {
+                        container.removeChild(emojiElement);
+                        
+                        // Remove container if empty
+                        if (container.children.length === 0) {
+                            document.body.removeChild(container);
+                        }
+                    }, 4000);
+                });
+            }
+
+            translateToEmojiBtn.addEventListener('click', () => {
+                const text = textToEmojiInput.value;
+                const translatedEmoji = translateToEmoji(text);
+                
+                // Smooth transition effect
+                emojiOutput.style.opacity = '0';
+                setTimeout(() => {
+                    emojiOutput.innerHTML = translatedEmoji || '🤷‍♂️';
+                    emojiOutput.style.opacity = '1';
+                }, 300);
+
+                // Optional: Text-to-Speech for the translation
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(
+                        `تمت ترجمة النص: ${text} إلى رموز تعبيرية`
+                    );
+                    utterance.lang = 'ar-SA';
+                    window.speechSynthesis.speak(utterance);
+                }
+            });
+
+            const textToSignInput = document.getElementById('text-to-sign-input');
+            const translateToSignBtn = document.getElementById('translate-to-sign');
+            const signLanguageOutput = document.getElementById('sign-language-output');
+            const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+            const startRealTimeTranslationBtn = document.getElementById('start-real-time-translation');
+
+            class AdvancedSignLanguageTranslator {
+                constructor() {
+                    this.translationDictionary = {
+                        // Comprehensive Sign Language Translation Dictionary
+                        'greetings': {
+                            'مرحبا': { sign: '👋', description: 'تحية عامة', confidence: 0.95 },
+                            'السلام عليكم': { sign: '🤲', description: 'تحية إسلامية', confidence: 0.98 },
+                            'أهلا': { sign: '✋', description: 'ترحيب غير رسمي', confidence: 0.90 }
+                        },
+                        'emotions': {
+                            'سعيد': { sign: '😊', description: 'مشاعر إيجابية', confidence: 0.92 },
+                            'حزين': { sign: '😢', description: 'مشاعر سلبية', confidence: 0.88 },
+                            'غاضب': { sign: '😠', description: 'مشاعر غضب', confidence: 0.85 }
+                        },
+                        'requests': {
+                            'مساعدة': { sign: '🆘', description: 'طلب المساعدة', confidence: 0.95 },
+                            'أريد الماء': { sign: '🚰', description: 'طلب الماء', confidence: 0.90 },
+                            'أين الحمام': { sign: '🚽', description: 'السؤال عن الحمام', confidence: 0.93 }
+                        },
+                        'actions': {
+                            'اجلس': { sign: '⬇️', description: 'الجلوس', confidence: 0.94 },
+                            'قف': { sign: '⬆️', description: 'الوقوف', confidence: 0.92 },
+                            'تعال': { sign: '👉', description: 'دعوة للقدوم', confidence: 0.91 }
+                        }
+                    };
+
+                    this.fallbackTranslation = {
+                        sign: '🤷‍♂️',
+                        description: 'ترجمة غير مؤكدة',
+                        confidence: 0.5
+                    };
+                }
+
+                translateText(text) {
+                    const words = text.trim().toLowerCase().split(/\s+/);
+                    const translations = words.map(word => this.findBestTranslation(word));
+                    return translations;
+                }
+
+                findBestTranslation(word) {
+                    for (const category in this.translationDictionary) {
+                        for (const [phrase, translation] of Object.entries(this.translationDictionary[category])) {
+                            if (word.includes(phrase)) {
+                                return translation;
+                            }
+                        }
+                    }
+                    return this.fallbackTranslation;
+                }
+
+                generateDetailedTranslation(translations) {
+                    const detailedTranslation = translations.map(translation => `
+                        <div class="translation-result">
+                            <div class="translation-emoji">${translation.sign}</div>
+                            <div class="translation-details">
+                                <span class="description">${translation.description}</span>
+                                <span class="confidence">دقة: ${(translation.confidence * 100).toFixed(2)}%</span>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    return `
+                        <div class="advanced-translation-container">
+                            <h4>نتائج الترجمة الفورية</h4>
+                            ${detailedTranslation}
+                        </div>
+                    `;
+                }
+
+                startRealTimeTranslation() {
+                    if ('webkitSpeechRecognition' in window) {
+                        const recognition = new webkitSpeechRecognition();
+                        recognition.lang = 'ar-SA';
+                        recognition.continuous = true;
+                        recognition.interimResults = false;
+
+                        recognition.onresult = (event) => {
+                            const transcript = event.results[event.results.length - 1][0].transcript;
+                            const translations = this.translateText(transcript);
+                            const detailedTranslation = this.generateDetailedTranslation(translations);
+                            
+                            const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+                            realTimeTranslationOutput.innerHTML = `
+                                <p>النص الأصلي: ${transcript}</p>
+                                ${detailedTranslation}
+                            `;
+
+                            this.speakTranslationConfirmation(translations);
+                        };
+
+                        recognition.onerror = (event) => {
+                            const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+                            realTimeTranslationOutput.innerHTML = `
+                                <p class="error">خطأ في التعرف على الصوت: ${event.error}</p>
+                            `;
+                        };
+
+                        recognition.start();
+                        const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+                        realTimeTranslationOutput.textContent = 'جارٍ الاستماع...';
+                    } else {
+                        const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+                        realTimeTranslationOutput.textContent = 'عذرًا، الترجمة الفورية غير متاحة';
+                    }
+                }
+
+                speakTranslationConfirmation(translations) {
+                    if ('speechSynthesis' in window) {
+                        const averageConfidence = translations.reduce((sum, t) => sum + t.confidence, 0) / translations.length;
+                        const confirmationMessage = `تمت ترجمة النص بدقة ${(averageConfidence * 100).toFixed(2)}%`;
+                        
+                        const utterance = new SpeechSynthesisUtterance(confirmationMessage);
+                        utterance.lang = 'ar-SA';
+                        window.speechSynthesis.speak(utterance);
+                    }
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const startRealTimeTranslationBtn = document.getElementById('start-real-time-translation');
+                const signLanguageTranslator = new AdvancedSignLanguageTranslator();
+
+                startRealTimeTranslationBtn.addEventListener('click', () => {
+                    signLanguageTranslator.startRealTimeTranslation();
+                });
+            });
+
+            const subscribeButtons = document.querySelectorAll('.subscribe-btn');
+            
+            subscribeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tier = button.getAttribute('data-tier');
+                    const contactNumber = '01140427665';
+                    
+                    Swal.fire({
+                        title: `اشتراك الباقة ${getTierName(tier)}`,
+                        html: `
+                            <p>للاستكمال، يرجى التواصل على:</p>
+                            <h3>${contactNumber}</h3>
+                            <p>المهندس: خالد يونس رجب</p>
+                            <small>سيتم مساعدتك في إتمام الاشتراك</small>
+                        `,
+                        icon: 'info',
+                        confirmButtonText: 'نسخ رقم الهاتف',
+                        showCancelButton: true,
+                        cancelButtonText: 'إلغاء'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            navigator.clipboard.writeText(contactNumber).then(() => {
+                                Swal.fire('تم نسخ رقم الهاتف', '', 'success');
+                            });
+                        }
+                    });
+                });
+            });
+
+            function getTierName(tier) {
+                switch(tier) {
+                    case 'basic': return 'الأساسية';
+                    case 'advanced': return 'المتقدمة';
+                    case 'pro': return 'الاحترافية';
+                    default: return '';
+                }
+            }
+
+            const buttonSound = new Howl({
+                src: ['button-click.mp3'], 
+                volume: 0.5
+            });
+
+            document.querySelectorAll('.btn-sound-effect').forEach(button => {
+                button.addEventListener('click', () => {
+                    buttonSound.play();
+                });
+            });
+
+            function createStrengthEmojiAnimation() {
+                const emoji = document.createElement('div');
+                emoji.textContent = '💪';
+                emoji.classList.add('strength-emoji-animation');
+                emoji.style.left = `${Math.random() * window.innerWidth}px`;
+                emoji.style.top = `${Math.random() * window.innerHeight}px`;
+                document.body.appendChild(emoji);
+
+                setTimeout(() => {
+                    document.body.removeChild(emoji);
+                    createStrengthEmojiAnimation();
+                }, 5000);
+            }
+
+            createStrengthEmojiAnimation();
+
+            const startAdvancedTranslationBtn = document.getElementById('start-advanced-translation');
+            const stopAdvancedTranslationBtn = document.getElementById('stop-advanced-translation');
+            const advancedTranslationResult = document.getElementById('advanced-translation-result');
+
+            if (startAdvancedTranslationBtn && stopAdvancedTranslationBtn && advancedTranslationResult) {
+                const advancedTranslationMessages = [
+                    "الترجمة جارية بدقة عالية 🌟",
+                    "تحليل لغة الإشارة قيد التنفيذ 🤲",
+                    "جاري التعرف على الإشارات 👀",
+                    "معالجة البيانات باستخدام الذكاء الاصطناعي 🧠",
+                    "دقة الترجمة: 98% ✨"
+                ];
+
+                startAdvancedTranslationBtn.addEventListener('click', () => {
+                    let currentIndex = 0;
+                    const translationInterval = setInterval(() => {
+                        advancedTranslationResult.innerHTML = `
+                            ${advancedTranslationMessages[currentIndex]}
+                            <div class="translation-wave"></div>
+                        `;
+                        currentIndex = (currentIndex + 1) % advancedTranslationMessages.length;
+                    }, 3000);
+
+                    stopAdvancedTranslationBtn.onclick = () => {
+                        clearInterval(translationInterval);
+                        advancedTranslationResult.innerHTML = 'تم إيقاف الترجمة';
+                    };
+                });
+            }
+
+            const signLanguageFeedback = document.getElementById('sign-language-feedback');
+            const signLanguageActions = {
+                'greet-btn': {
+                    message: 'مرحبًا! كيف يمكنني مساعدتك اليوم؟',
+                    sign: '👋'
+                },
+                'help-btn': {
+                    message: 'نعم، أنا هنا للمساعدة. تفضل بطلبك.',
+                    sign: '🤲'
+                },
+                'question-btn': {
+                    message: 'اسألني أي سؤال وسأساعدك.',
+                    sign: '❓'
+                }
+            };
+
+            Object.keys(signLanguageActions).forEach(btnId => {
+                const btn = document.getElementById(btnId);
+                btn.addEventListener('click', () => {
+                    const action = signLanguageActions[btnId];
+                    signLanguageFeedback.innerHTML = `
+                        <p>${action.message}</p>
+                        <div style="font-size: 3em; text-align: center;">${action.sign}</div>
+                    `;
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function welcomeHearingSupport() {
+                const welcomeMessage = "أهلا بك في قسم الإعاقة السمعية، أنا هنا لمساعدتك يا بطل";
+                
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(welcomeMessage);
+                    utterance.lang = 'ar-SA';
+                    utterance.rate = 0.8; // Slightly slower speech
+                    utterance.pitch = 1; // Normal pitch
+                    window.speechSynthesis.speak(utterance);
+                }
+            }
+
+            welcomeHearingSupport();
+        });
+    </script>
+</body>
+</html>

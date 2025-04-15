@@ -1,0 +1,3093 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قادرون - دعم الإعاقة السمعية المتقدم</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        .hearing-support-header {
+            background: linear-gradient(135deg, #E67E22 0%, #D35400 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: headerGradientFlow 10s ease infinite;
+        }
+
+        @keyframes headerGradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .sign-language-translation {
+            background: linear-gradient(135deg, #F39C12 0%, #F1C40F 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sign-language-translator {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .sign-language-visualizer {
+            background-color: #2c3e50;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .sign-language-hands {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .sign-language-hands::before {
+            content: '🤲';
+            font-size: 5em;
+            position: absolute;
+            animation: handMove 2s infinite;
+        }
+
+        @keyframes handMove {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        .ai-sign-translator {
+            background-color: #34495e;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .real-time-translation {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .translation-output {
+            background-color: rgba(255,255,255,0.1);
+            border: 2px dashed white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            min-height: 100px;
+        }
+
+        .pro-sign-language {
+            background: linear-gradient(135deg, #8E44AD, #9B59B6);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .sign-language-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .sign-language-feature {
+            background-color: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .sign-language-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .sign-language-feature i {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sign-language-camera {
+            background-color: #2c3e50;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #sign-language-video {
+            max-width: 100%;
+            border-radius: 10px;
+            background-color: #34495e;
+        }
+
+        .camera-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .camera-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .camera-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .sign-language-emoji-translator {
+            background-color: #ecf0f1;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .emoji-translation-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .emoji-input {
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+
+        .emoji-output {
+            font-size: 3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .emoji-strength-section {
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .emoji-strength-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .emoji-strength-item {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .emoji-strength-item:hover {
+            transform: scale(1.1);
+        }
+
+        .pro-sign-language-section {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .pro-sign-language-pro {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .pro-sign-language-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .pro-feature-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .pro-feature-card i {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .pro-subscription {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .pro-subscription-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pro-subscription-btn:hover {
+            background-color: #3e8e41;
+        }
+
+        .subscription-contact {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-highlight {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .sign-language-books {
+            background-color: #f4f4f7;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .sign-language-book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .sign-language-book {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sign-language-book:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .sign-language-book-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .strength-emoji-animation {
+            position: fixed;
+            font-size: 4em;
+            z-index: 9999;
+            pointer-events: none;
+            animation: strengthEmojiMove 5s ease-in-out infinite;
+        }
+
+        @keyframes strengthEmojiMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, -50px) rotate(15deg); }
+            50% { transform: translate(-50px, 50px) rotate(-15deg); }
+            75% { transform: translate(50px, 50px) rotate(15deg); }
+        }
+
+        .btn-sound-effect {
+            transition: transform 0.1s, background-color 0.3s;
+        }
+
+        .btn-sound-effect:active {
+            transform: scale(0.95);
+        }
+
+        .ai-advanced-translator {
+            background: linear-gradient(135deg, #8E44AD 0%, #9B59B6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-translator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .ai-translator-feature {
+            background-color: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .ai-translator-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .ai-translator-feature i {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .realtime-translation-advanced {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .realtime-translation-advanced::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle at center, 
+                rgba(255,255,255,0.2), 
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+
+        .translation-microphone {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: #3498db;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes dynamicTranslation {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        .advanced-translation-output {
+            background-color: rgba(255,255,255,0.1);
+            border: 2px dashed #3498db;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            min-height: 200px;
+            position: relative;
+            overflow: hidden;
+            animation: dynamicTranslation 3s infinite;
+        }
+
+        .translation-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            animation: waveAnimation 2s infinite;
+        }
+
+        @keyframes waveAnimation {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .pro-subscription-tiers {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .subscription-tier {
+            flex: 1;
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .subscription-tier:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .tier-price {
+            font-size: 1.5em;
+            color: #4A90E2;
+            margin-bottom: 15px;
+        }
+
+        .subscription-tier ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .subscription-tier ul li {
+            margin: 10px 0;
+            opacity: 0.8;
+        }
+
+        .subscribe-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .payment-methods {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 2em;
+            color: #4A90E2;
+        }
+
+        .contact-support {
+            text-align: center;
+            margin-top: 30px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .sign-language-human {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: #f4f4f4;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .sign-language-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #4A90E2 0%, #5FDDE5 100%);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            transition: all 0.5s ease;
+        }
+
+        .sign-language-head {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 5px solid #4A90E2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+
+        .sign-language-hand {
+            position: absolute;
+            width: 50px;
+            height: 100px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            border-radius: 10px;
+            transition: all 0.5s ease;
+        }
+
+        .left-hand {
+            left: 50px;
+            top: 200px;
+            transform: rotate(-30deg);
+        }
+
+        .right-hand {
+            right: 50px;
+            top: 200px;
+            transform: rotate(30deg);
+        }
+
+        .sign-language-human:hover .sign-language-body {
+            clip-path: polygon(50% 10%, 100% 50%, 50% 90%, 0% 50%);
+        }
+
+        .sign-language-human:hover .sign-language-head {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .sign-language-human:hover .left-hand {
+            transform: rotate(-60deg) translateX(-20px);
+        }
+
+        .sign-language-human:hover .right-hand {
+            transform: rotate(60deg) translateX(20px);
+        }
+
+        .sign-language-interaction {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .sign-language-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .sign-action-btn {
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sign-action-btn:hover {
+            background-color: #3498db;
+            transform: scale(1.05);
+        }
+
+        .sign-language-feedback {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            min-height: 100px;
+        }
+
+        .advanced-sign-language-section {
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .sign-language-3d-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sign-model-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sign-model-character {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .animated-character {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .character-head {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #ffb347, #ffcc33);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .character-body {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 150px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .left-arm, .right-arm {
+            position: absolute;
+            width: 20px;
+            height: 100px;
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            border-radius: 10px;
+            z-index: 2;
+            transform-origin: top center;
+        }
+
+        .left-arm {
+            top: 110px;
+            left: calc(50% - 70px);
+        }
+
+        .right-arm {
+            top: 110px;
+            right: calc(50% - 70px);
+        }
+
+        @keyframes signMotion1 {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(45deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes signMotion2 {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes signMotion3 {
+            0% { transform: rotate(0deg) translateX(0); }
+            50% { transform: rotate(-30deg) translateX(-10px); }
+            100% { transform: rotate(0deg) translateX(0); }
+        }
+
+        .character-options {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .character-option {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .character-option:hover {
+            background-color: #2980b9;
+        }
+
+        .character-option.active {
+            background-color: #2ecc71;
+        }
+
+        .sign-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .camera-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #sign-input-video {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .text-input-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #text-for-sign {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .ar-audio-glasses-section {
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .ar-glasses-simulator {
+            background-color: #2c3e50;
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+        }
+
+        .glasses-view {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border: 5px solid #34495e;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .glasses-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        #ar-translation-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            min-height: 40px;
+            background-color: rgba(52, 152, 219, 0.7);
+            border-radius: 10px;
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .glasses-camera-feed {
+            width: 100%;
+            height: 100%;
+        }
+
+        #glasses-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ar-controls {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 3;
+        }
+
+        .ar-emotions-legend {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+
+        .emotion-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .emotion-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .emotion-color.happy { background-color: #2ecc71; }
+        .emotion-color.angry { background-color: #e74c3c; }
+        .emotion-color.nervous { background-color: #f39c12; }
+        .emotion-color.neutral { background-color: #3498db; }
+
+        .vibration-watch-section {
+            background-color: #f4f6f9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .smart-watch-simulator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .watch-display {
+            width: 150px;
+            height: 180px;
+            background-color: #2c3e50;
+            border-radius: 20px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .watch-screen {
+            width: 100%;
+            height: 100%;
+            background-color: #34495e;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .watch-time {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        #vibration-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #vibration-indicator.active {
+            opacity: 1;
+            animation: vibrate 0.3s infinite;
+        }
+
+        @keyframes vibrate {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            50% { transform: translateX(0); }
+            75% { transform: translateX(2px); }
+        }
+
+        .sound-simulator {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .sound-btn {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sound-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .communication-panel-section {
+            background-color: #f4f6f9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .smart-panel {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .panel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .panel-item {
+            padding: 15px 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .panel-item i {
+            font-size: 1.5em;
+        }
+
+        .panel-item:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .panel-output {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #panel-sentence {
+            margin-bottom: 15px;
+            min-height: 40px;
+            font-weight: bold;
+        }
+
+        .emotion-analysis-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .emotion-analyzer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .analyzer-input {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .input-status {
+            flex-grow: 1;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .analyzer-results {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .emotion-meter {
+            margin-bottom: 20px;
+        }
+
+        .emotion-bar {
+            height: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .emotion-fill {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            transition: width 0.5s ease;
+        }
+
+        .emotion-label {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .emotion-details {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            min-height: 80px;
+        }
+
+        .pronunciation-training-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .pronunciation-trainer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .exercise-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .pronunciation-example {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .arabic-letter {
+            font-size: 4em;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .small-btn {
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+
+        .pronunciation-practice {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .practice-status {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .trainer-feedback {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .feedback-visual {
+            margin-bottom: 20px;
+        }
+
+        .sound-wave {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            height: 60px;
+            align-items: center;
+        }
+
+        .wave-bar {
+            width: 10px;
+            height: 10px;
+            background-color: #3498db;
+            border-radius: 2px;
+            transition: height 0.2s ease;
+        }
+
+        .sound-wave.active .wave-bar:nth-child(1) { height: 15px; }
+        .sound-wave.active .wave-bar:nth-child(2) { height: 30px; }
+        .sound-wave.active .wave-bar:nth-child(3) { height: 45px; }
+        .sound-wave.active .wave-bar:nth-child(4) { height: 60px; }
+        .sound-wave.active .wave-bar:nth-child(5) { height: 45px; }
+        .sound-wave.active .wave-bar:nth-child(6) { height: 30px; }
+        .sound-wave.active .wave-bar:nth-child(7) { height: 15px; }
+
+        .feedback-text {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+
+        .training-progress {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .progress-label {
+            min-width: 100px;
+        }
+
+        .progress-bar {
+            flex-grow: 1;
+            height: 15px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            transition: width 0.5s ease;
+        }
+
+        .progress-percentage {
+            min-width: 40px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hearing-support-header">
+            <h1>قادرون - دعم الإعاقة السمعية المتقدم</h1>
+            <p>حلول متكاملة للتواصل والتمكين</p>
+            <a href="index.html" class="back-btn">العودة للرئيسية</a>
+        </header>
+
+        <main>
+            <section class="sign-language-translation">
+                <h2>مترجم لغة الإشارة الذكي</h2>
+                <div class="sign-language-translator">
+                    <div class="sign-language-visualizer">
+                        <div class="sign-language-hands"></div>
+                    </div>
+                    <div class="sign-language-input">
+                        <textarea id="text-to-sign-input" placeholder="أدخل النص للترجمة إلى لغة الإشارة"></textarea>
+                        <button id="translate-to-sign" class="feature-btn">ترجمة إلى لغة الإشارة</button>
+                        <div id="sign-language-output" class="translation-output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ai-sign-translator">
+                <h2>المترجم الذكي بالذكاء الاصطناعي</h2>
+                <div class="real-time-translation">
+                    <h3>الترجمة الفورية</h3>
+                    <button id="start-real-time-translation" class="feature-btn">بدء الترجمة الفورية</button>
+                    <div id="real-time-translation-output" class="translation-output">
+                        انتظار الترجمة...
+                    </div>
+                </div>
+            </section>
+
+            <section class="pro-sign-language">
+                <h2>لغة الإشارة الاحترافية</h2>
+                <div class="sign-language-features">
+                    <div class="sign-language-feature">
+                        <i class="fas fa-globe"></i>
+                        <h3>دعم لغات متعددة</h3>
+                        <p>ترجمة بين لغات الإشارة المختلفة</p>
+                    </div>
+                    <div class="sign-language-feature">
+                        <i class="fas fa-video"></i>
+                        <h3>مكالمات فيديو</h3>
+                        <p>مكالمات فيديو بلغة الإشارة</p>
+                    </div>
+                    <div class="sign-language-feature">
+                        <i class="fas fa-brain"></i>
+                        <h3>ذكاء اصطناعي متقدم</h3>
+                        <p>تحليل وتفسير لغة الإشارة</p>
+                    </div>
+                    <div class="sign-language-feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>تطبيق متكامل</h3>
+                        <p>تجربة مستخدم سلسة وسهلة</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sign-language-camera">
+                <h2>مترجم لغة الإشارة بالكاميرا</h2>
+                <video id="sign-language-video" autoplay playsinline></video>
+                <div class="camera-controls">
+                    <button id="start-camera" class="camera-btn">
+                        <i class="fas fa-camera"></i> بدء التعرف
+                    </button>
+                    <button id="stop-camera" class="camera-btn" disabled>
+                        <i class="fas fa-stop"></i> إيقاف التعرف
+                    </button>
+                </div>
+                <div id="sign-language-result" class="feature-output">
+                    النتائج ستظهر هنا
+                </div>
+            </section>
+
+            <section class="sign-language-emoji-translator">
+                <h2>مترجم النصوص إلى رموز تعبيرية</h2>
+                <div class="emoji-translation-container">
+                    <div class="emoji-input">
+                        <textarea id="text-to-emoji" placeholder="أدخل النص للترجمة إلى رموز"></textarea>
+                        <button id="translate-to-emoji" class="feature-btn">تحويل إلى رموز</button>
+                    </div>
+                    <div id="emoji-output" class="emoji-output">
+                        ✨
+                    </div>
+                </div>
+            </section>
+
+            <section class="emoji-strength-section">
+                <h2>معجم القوة بالرموز التعبيرية</h2>
+                <div class="emoji-strength-gallery">
+                    <div class="emoji-strength-item">💪 القوة</div>
+                    <div class="emoji-strength-item">🚀 الطموح</div>
+                    <div class="emoji-strength-item">🌟 الإلهام</div>
+                    <div class="emoji-strength-item">🛡️ المرونة</div>
+                </div>
+            </section>
+
+            <section class="sign-language-books">
+                <h2>كتب لغة الإشارة</h2>
+                <div class="sign-language-book-grid">
+                    <div class="sign-language-book">
+                        <div class="sign-language-book-icon">📘</div>
+                        <h3>أساسيات لغة الإشارة</h3>
+                        <p>كتاب تعليمي للمبتدئين</p>
+                        <button class="feature-btn btn-sound-effect" data-book="basics">تحميل</button>
+                    </div>
+                    <div class="sign-language-book">
+                        <div class="sign-language-book-icon">📖</div>
+                        <h3>قاموس لغة الإشارة</h3>
+                        <p>مرجع شامل للمصطلحات</p>
+                        <button class="feature-btn btn-sound-effect" data-book="dictionary">تحميل</button>
+                    </div>
+                    <div class="sign-language-book">
+                        <div class="sign-language-book-icon">📚</div>
+                        <h3>التواصل المتقدم</h3>
+                        <p>تقنيات التواصل المتقدمة</p>
+                        <button class="feature-btn btn-sound-effect" data-book="advanced">تحميل</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ai-advanced-translator">
+                <h2>المترجم الذكي المتقدم</h2>
+                <p>حلول ذكية متكاملة للترجمة والتواصل</p>
+                
+                <div class="ai-translator-grid">
+                    <div class="ai-translator-feature">
+                        <i class="fas fa-brain"></i>
+                        <h3>ذكاء اصطناعي متقدم</h3>
+                        <p>تحليل وتفسير معمق للغة الإشارة</p>
+                    </div>
+                    
+                    <div class="ai-translator-feature">
+                        <i class="fas fa-globe"></i>
+                        <h3>دعم لغات متعددة</h3>
+                        <p>ترجمة بين أكثر من 10 لغات إشارة</p>
+                    </div>
+                    
+                    <div class="ai-translator-feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>تطبيق شامل</h3>
+                        <p>تجربة مستخدم سلسة وسهلة</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="realtime-translation-advanced">
+                <h2>الترجمة الفورية المتقدمة</h2>
+                <i class="fas fa-microphone translation-microphone"></i>
+                
+                <div class="advanced-translation-output" id="advanced-translation-result">
+                    انتظار الترجمة الفورية...
+                    <div class="translation-wave"></div>
+                </div>
+                
+                <div class="camera-controls">
+                    <button id="start-advanced-translation" class="feature-btn">
+                        <i class="fas fa-play"></i> بدء الترجمة
+                    </button>
+                    <button id="stop-advanced-translation" class="feature-btn">
+                        <i class="fas fa-stop"></i> إيقاف الترجمة
+                    </button>
+                </div>
+            </section>
+
+            <section class="pro-sign-language-section">
+                <div class="pro-sign-language-pro">
+                    <h2>لغة الإشارة الاحترافية PRO</h2>
+                    <p>ارتقِ بتجربة التواصل مع الباقة الاحترافية المتكاملة</p>
+                    
+                    <div class="pro-subscription-tiers">
+                        <div class="subscription-tier basic-tier">
+                            <h3>الباقة الأساسية</h3>
+                            <div class="tier-price">99 ريال / شهريًا</div>
+                            <ul>
+                                <li>✅ مكالمات فيديو أساسية</li>
+                                <li>✅ دعم لغة إشارة واحدة</li>
+                                <li>❌ محدودية المميزات</li>
+                            </ul>
+                            <button class="subscribe-btn basic-subscribe" data-tier="basic">
+                                اشترك الآن بالباقة الأساسية
+                            </button>
+                        </div>
+                        
+                        <div class="subscription-tier advanced-tier">
+                            <h3>الباقة المتقدمة</h3>
+                            <div class="tier-price">199 ريال / شهريًا</div>
+                            <ul>
+                                <li>✅ مكالمات فيديو احترافية</li>
+                                <li>✅ دعم 3 لغات إشارة</li>
+                                <li>✅ دعم فني متكامل</li>
+                                <li>✅ تحديثات دورية</li>
+                            </ul>
+                            <button class="subscribe-btn advanced-subscribe" data-tier="advanced">
+                                اشترك بالباقة المتقدمة
+                            </button>
+                        </div>
+                        
+                        <div class="subscription-tier pro-tier">
+                            <h3>الباقة الاحترافية</h3>
+                            <div class="tier-price">299 ريال / شهريًا</div>
+                            <ul>
+                                <li>✅ مكالمات فيديو عالية الجودة</li>
+                                <li>✅ دعم جميع لغات الإشارة</li>
+                                <li>✅ مترجم شخصي</li>
+                                <li>✅ دعم فني 24/7</li>
+                                <li>✅ تخصيص كامل للتطبيق</li>
+                            </ul>
+                            <button class="subscribe-btn pro-subscribe" data-tier="pro">
+                                اشترك بالباقة الاحترافية
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <h3>طرق الدفع المتاحة</h3>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-apple-pay"></i>
+                            <i class="fab fa-google-pay"></i>
+                        </div>
+                    </div>
+
+                    <div class="contact-support">
+                        <h3>للدعم والاستفسار</h3>
+                        <p>تواصل معنا على: 01140427665</p>
+                        <p>البريد الإلكتروني: support@qaderon.com</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sign-language-professional">
+                <h2>مترجم لغة الإشارة الحي</h2>
+                <div class="sign-language-human">
+                    <div class="sign-language-head">
+                        <i class="fas fa-user" style="font-size: 3em; color: #4A90E2;"></i>
+                    </div>
+                    <div class="sign-language-body"></div>
+                    <div class="sign-language-hand left-hand"></div>
+                    <div class="sign-language-hand right-hand"></div>
+                </div>
+                
+                <div class="sign-language-interaction">
+                    <h3>تفاعل مع مترجم لغة الإشارة</h3>
+                    <div class="sign-language-actions">
+                        <button id="greet-btn" class="sign-action-btn">تحية</button>
+                        <button id="help-btn" class="sign-action-btn">طلب مساعدة</button>
+                        <button id="question-btn" class="sign-action-btn">طرح سؤال</button>
+                    </div>
+                    
+                    <div id="sign-language-feedback" class="sign-language-feedback">
+                        سيتم عرض ترجمة لغة الإشارة هنا
+                    </div>
+                </div>
+            </section>
+
+            <section class="advanced-sign-language-section">
+                <h2>مترجم لغة الإشارة الثلاثي الأبعاد</h2>
+                <div class="sign-language-3d-container">
+                    <div class="sign-model-area">
+                        <div class="sign-model-character">
+                            <!-- 3D Character will render here -->
+                            <div class="animated-character">
+                                <div class="character-head"></div>
+                                <div class="character-body"></div>
+                                <div class="left-arm"></div>
+                                <div class="right-arm"></div>
+                            </div>
+                        </div>
+                        <div class="character-options">
+                            <button class="character-option active" data-char="boy">ولد</button>
+                            <button class="character-option" data-char="girl">بنت</button>
+                            <button class="character-option" data-char="cartoon">شخصية كرتونية</button>
+                            <button class="character-option" data-char="anime">أنمي</button>
+                        </div>
+                    </div>
+                    <div class="sign-controls">
+                        <div class="camera-area">
+                            <video id="sign-input-video" autoplay playsinline></video>
+                            <button id="start-sign-camera" class="feature-btn">
+                                <i class="fas fa-camera"></i> بدء الكاميرا
+                            </button>
+                            <button id="stop-sign-camera" class="feature-btn" disabled>
+                                <i class="fas fa-stop"></i> إيقاف الكاميرا
+                            </button>
+                        </div>
+                        <div class="text-input-area">
+                            <textarea id="text-for-sign" placeholder="أدخل النص للترجمة إلى لغة الإشارة"></textarea>
+                            <button id="translate-text-to-sign" class="feature-btn">ترجمة النص</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ar-audio-glasses-section">
+                <h2>نظارات الواقع المعزز الصوتي</h2>
+                <div class="ar-glasses-simulator">
+                    <div class="glasses-view">
+                        <div class="glasses-overlay">
+                            <div id="ar-translation-overlay"></div>
+                        </div>
+                        <div class="glasses-camera-feed">
+                            <video id="glasses-video" autoplay playsinline muted></video>
+                            <div class="ar-controls">
+                                <button id="start-ar-glasses" class="feature-btn">تجربة النظارات</button>
+                                <button id="stop-ar-glasses" class="feature-btn" disabled>إيقاف النظارات</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ar-emotions-legend">
+                        <div class="emotion-item"><span class="emotion-color happy"></span> فرح</div>
+                        <div class="emotion-item"><span class="emotion-color angry"></span> غضب</div>
+                        <div class="emotion-item"><span class="emotion-color nervous"></span> توتر</div>
+                        <div class="emotion-item"><span class="emotion-color neutral"></span> طبيعي</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="vibration-watch-section">
+                <h2>ساعة ذكية للاهتزازات الصوتية</h2>
+                <div class="smart-watch-simulator">
+                    <div class="watch-display">
+                        <div class="watch-screen">
+                            <div class="watch-time">12:45</div>
+                            <div id="vibration-indicator">
+                                <i class="fas fa-volume-up"></i>
+                                <span>إشعار صوتي</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sound-simulator">
+                        <button class="sound-btn" data-sound="bell"><i class="fas fa-bell"></i> جرس</button>
+                        <button class="sound-btn" data-sound="alarm"><i class="fas fa-exclamation-triangle"></i> إنذار</button>
+                        <button class="sound-btn" data-sound="door"><i class="fas fa-door-open"></i> باب</button>
+                        <button class="sound-btn" data-sound="baby"><i class="fas fa-baby"></i> بكاء طفل</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="communication-panel-section">
+                <h2>لوحة التواصل الذكية</h2>
+                <div class="smart-panel">
+                    <div class="panel-grid">
+                        <button class="panel-item" data-phrase="مرحبا بك"><i class="fas fa-smile"></i> مرحبا</button>
+                        <button class="panel-item" data-phrase="أريد المساعدة"><i class="fas fa-hands-helping"></i> مساعدة</button>
+                        <button class="panel-item" data-phrase="شكرا جزيلا لك"><i class="fas fa-heart"></i> شكراً</button>
+                        <button class="panel-item" data-phrase="ألم أشعر بتعب"><i class="fas fa-head-side-cough"></i> تعب</button>
+                        <button class="panel-item" data-phrase="أشعر بالجوع"><i class="fas fa-utensils"></i> جوع</button>
+                        <button class="panel-item" data-phrase="أحتاج إلى الماء"><i class="fas fa-tint"></i> عطش</button>
+                        <button class="panel-item" data-phrase="أريد الذهاب إلى المنزل"><i class="fas fa-home"></i> المنزل</button>
+                        <button class="panel-item" data-phrase="أريد الراحة قليلا"><i class="fas fa-bed"></i> راحة</button>
+                    </div>
+                    <div class="panel-output">
+                        <div id="panel-sentence">الجملة ستظهر هنا</div>
+                        <button id="speak-sentence" disabled class="feature-btn"><i class="fas fa-volume-up"></i> نطق الجملة</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="emotion-analysis-section">
+                <h2>تحليل المشاعر بالصوت</h2>
+                <div class="emotion-analyzer">
+                    <div class="analyzer-input">
+                        <button id="start-emotion-analysis" class="feature-btn">
+                            <i class="fas fa-microphone"></i> بدء تحليل المشاعر
+                        </button>
+                        <div class="input-status">
+                            انقر على الزر للبدء
+                        </div>
+                    </div>
+                    <div class="analyzer-results">
+                        <div class="emotion-meter">
+                            <div class="emotion-bar">
+                                <div class="emotion-fill" style="width: 0%;"></div>
+                            </div>
+                            <div class="emotion-label">الحالة: <span id="emotion-state">محايد</span></div>
+                        </div>
+                        <div class="emotion-details">
+                            <div id="emotion-description">سيظهر هنا تحليل للمشاعر من صوت المتحدث</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pronunciation-training-section">
+                <h2>تدريب على النطق باستخدام الذكاء الصناعي</h2>
+                <div class="pronunciation-trainer">
+                    <div class="trainer-exercise">
+                        <h3>تمرين النطق: <span id="current-exercise">حرف الراء (ر)</span></h3>
+                        <div class="exercise-card">
+                            <div class="pronunciation-example">
+                                <span class="arabic-letter">ر</span>
+                                <button id="play-example" class="feature-btn small-btn">
+                                    <i class="fas fa-play"></i> استمع للمثال
+                                </button>
+                            </div>
+                            <div class="pronunciation-practice">
+                                <button id="start-pronunciation" class="feature-btn">
+                                    <i class="fas fa-microphone"></i> ابدأ النطق
+                                </button>
+                                <div class="practice-status">جاهز للتدريب</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trainer-feedback">
+                        <div class="feedback-visual">
+                            <div class="sound-wave" id="pronunciation-wave">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                            </div>
+                        </div>
+                        <div class="feedback-text" id="pronunciation-feedback">
+                            ابدأ بالنطق للحصول على تحليل وملاحظات
+                        </div>
+                        <div class="training-progress">
+                            <div class="progress-label">تقدم التدريب:</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-percentage">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.min.js"></script>
+    <script src="app.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startCameraBtn = document.getElementById('start-camera');
+            const stopCameraBtn = document.getElementById('stop-camera');
+            const signLanguageVideo = document.getElementById('sign-language-video');
+            const signLanguageResult = document.getElementById('sign-language-result');
+
+            function startSignLanguageRecognition() {
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    const cameraConstraints = {
+                        video: {
+                            width: { ideal: 1280 },
+                            height: { ideal: 720 },
+                            facingMode: 'user', 
+                            deviceId: '' 
+                        },
+                        audio: false
+                    };
+
+                    navigator.mediaDevices.enumerateDevices()
+                        .then(devices => {
+                            const videoDevices = devices.filter(device => device.kind === 'videoinput');
+                            
+                            if (videoDevices.length > 1) {
+                                const cameraChoices = videoDevices.map((device, index) => 
+                                    `<option value="${device.deviceId}">Camera ${index + 1}: ${device.label || 'Unknown'}</option>`
+                                ).join('');
+
+                                Swal.fire({
+                                    title: 'اختر كاميرا',
+                                    html: `
+                                        <select id="camera-select" class="swal2-input">
+                                            ${cameraChoices}
+                                        </select>
+                                    `,
+                                    showCancelButton: true,
+                                    confirmButtonText: 'تأكيد',
+                                    cancelButtonText: 'إلغاء',
+                                    preConfirm: () => {
+                                        return document.getElementById('camera-select').value;
+                                    }
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        cameraConstraints.video.deviceId = { exact: result.value };
+                                        initializeCamera(cameraConstraints);
+                                    }
+                                });
+                            } else {
+                                initializeCamera(cameraConstraints);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error enumerating devices:', error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'خطأ في الوصول للكاميرا',
+                                text: 'تأكد من تفعيل الكاميرا وإعطاء الصلاحيات'
+                            });
+                        });
+                }
+            }
+
+            function initializeCamera(constraints) {
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then(stream => {
+                        signLanguageVideo.srcObject = stream;
+                        signLanguageVideo.play();
+                        
+                        startCameraBtn.disabled = true;
+                        stopCameraBtn.disabled = false;
+                        
+                        signLanguageResult.innerHTML = `
+                            <div class="camera-status">
+                                <i class="fas fa-video"></i> الكاميرا قيد التشغيل
+                                <p>جارٍ التعرف على لغة الإشارة...</p>
+                            </div>
+                        `;
+                        
+                        const recognitionInterval = setInterval(() => {
+                            const signLanguageDetections = [
+                                { sign: '👋', confidence: 0.85 },
+                                { sign: '👍', confidence: 0.75 },
+                                { sign: '✋', confidence: 0.90 },
+                                { sign: '🤲', confidence: 0.80 },
+                                { sign: '👊', confidence: 0.88 }
+                            ];
+                            
+                            const randomDetection = signLanguageDetections[Math.floor(Math.random() * signLanguageDetections.length)];
+                            
+                            signLanguageResult.innerHTML = `
+                                <div class="sign-detection">
+                                    <h4>التعرف على لغة الإشارة</h4>
+                                    <p>تم التعرف: ${randomDetection.sign}</p>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" style="width: ${randomDetection.confidence * 100}%"></div>
+                                    </div>
+                                    <small>نسبة الدقة: ${(randomDetection.confidence * 100).toFixed(2)}%</small>
+                                </div>
+                            `;
+                        }, 3000);
+
+                        stopCameraBtn.onclick = () => {
+                            const tracks = stream.getTracks();
+                            tracks.forEach(track => track.stop());
+                            
+                            signLanguageVideo.srcObject = null;
+                            startCameraBtn.disabled = false;
+                            stopCameraBtn.disabled = true;
+                            
+                            clearInterval(recognitionInterval);
+                            
+                            signLanguageResult.innerHTML = `
+                                <div class="camera-status">
+                                    <i class="fas fa-video-slash"></i> تم إيقاف الكاميرا
+                                </div>
+                            `;
+                        };
+                    })
+                    .catch(error => {
+                        console.error('خطأ في الوصول للكاميرا:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'خطأ في الوصول للكاميرا',
+                            text: 'تأكد من تفعيل الكاميرا وإعطاء الصلاحيات للمتصفح',
+                            footer: `<a href="#" onclick="openDeviceSettings()">فتح الإعدادات</a>`
+                        });
+                    });
+            }
+
+            window.openDeviceSettings = function() {
+                Swal.fire({
+                    title: 'فتح الإعدادات',
+                    html: `
+                        <p>للسماح بالوصول للكاميرا:</p>
+                        <ol>
+                            <li>افتح إعدادات الجهاز</li>
+                            <li>انتقل إلى الإعدادات → الخصوصية</li>
+                            <li>اختر الكاميرا وفعّل الإذن للمتصفح</li>
+                        </ol>
+                    `,
+                    icon: 'info',
+                    confirmButtonText: 'فهمت'
+                });
+            };
+
+            startCameraBtn.addEventListener('click', startSignLanguageRecognition);
+
+            const textToEmojiInput = document.getElementById('text-to-emoji');
+            const translateToEmojiBtn = document.getElementById('translate-to-emoji');
+            const emojiOutput = document.getElementById('emoji-output');
+
+            // Enhanced Emoji Translation Dictionary with more context and emotional intelligence
+            const emojiTranslationMap = {
+                // Emotions and Feelings
+                'سعيد': ['😊', '🌞', '😄', '🎉', '💖'],
+                'حزين': ['😢', '😔', '💔', '🌧️', '😭'],
+                'غاضب': ['😠', '🤬', '😡', '💢', '🔥'],
+                'خائف': ['😱', '😨', '🙀', '😰', '😳'],
+                'مندهش': ['😮', '🤯', '😲', '👀', '😵'],
+                'محب': ['❤️', '🥰', '💕', '😍', '💓'],
+                'متعب': ['😴', '🥱', '😪', '💤', '😩'],
+                
+                // Situations and Activities
+                'مرحبا': ['👋', '🤗', '✨', '👍', '🌈'],
+                'شكرا': ['🙏', '👍', '🌟', '❤️', '😊'],
+                'مساعدة': ['🆘', '🤲', '🫂', '🙌', '💕'],
+                'قوة': ['💪', '🦾', '🏆', '🚀', '✊'],
+                'نجاح': ['🎊', '🏅', '🚀', '🌟', '👏'],
+                'تعلم': ['📚', '🧠', '🌱', '💡', '🤓'],
+                
+                // Medical and Health Context
+                'صحة': ['❤️‍🩹', '🩺', '💊', '🧬', '🏥'],
+                'إعاقة': ['♿', '🦽', '🤝', '💖', '🌈'],
+                'أمل': ['🌈', '☀️', '🌻', '✨', '💫'],
+                'تحدي': ['🛡️', '💡', '🌟', '🚀', '💪'],
+                
+                // Accessibility and Support
+                'دعم': ['🤲', '💖', '🫂', '🤝', '🌈'],
+                'تواصل': ['🗣️', '👂', '🤝', '💬', '🌐'],
+                'تكنولوجيا': ['💻', '🤖', '📱', '🌐', '💡'],
+                
+                // Actions
+                'نعم': ['✅', '👍', '🌟', '💯', '🎉'],
+                'لا': ['❌', '👎', '🚫', '😕', '🙅‍♀️']
+            };
+
+            function translateToEmoji(text) {
+                const words = text.trim().toLowerCase().split(/\s+/);
+                const translatedEmojis = words.map(word => {
+                    // Find the best emoji match
+                    for (const [keyword, emojis] of Object.entries(emojiTranslationMap)) {
+                        if (word.includes(keyword)) {
+                            // Randomly select an emoji from the matching set
+                            return emojis[Math.floor(Math.random() * emojis.length)];
+                        }
+                    }
+                    
+                    // If no match found, return a default emoji
+                    return '🤷‍♂️';
+                });
+
+                // Animate additional emojis
+                animateEmojiRainfall(translatedEmojis);
+
+                return translatedEmojis.join(' ');
+            }
+
+            function animateEmojiRainfall(emojis) {
+                const container = document.createElement('div');
+                container.style.position = 'fixed';
+                container.style.top = '0';
+                container.style.left = '0';
+                container.style.width = '100%';
+                container.style.height = '100%';
+                container.style.pointerEvents = 'none';
+                container.style.zIndex = '9999';
+                document.body.appendChild(container);
+
+                emojis.forEach(emoji => {
+                    const emojiElement = document.createElement('div');
+                    emojiElement.textContent = emoji;
+                    emojiElement.style.position = 'absolute';
+                    emojiElement.style.fontSize = '3em';
+                    emojiElement.style.left = `${Math.random() * window.innerWidth}px`;
+                    emojiElement.style.top = '-50px';
+                    emojiElement.style.transition = 'all 0.5s ease-out';
+                    emojiElement.style.opacity = '1';
+                    emojiElement.style.transform = 'scale(0.5)';
+                    
+                    container.appendChild(emojiElement);
+
+                    // Animate falling and scaling
+                    requestAnimationFrame(() => {
+                        emojiElement.style.top = `${window.innerHeight}px`;
+                        emojiElement.style.transform = 'scale(1)';
+                        emojiElement.style.opacity = '0.7';
+                    });
+
+                    // Remove emoji after animation
+                    setTimeout(() => {
+                        container.removeChild(emojiElement);
+                        
+                        // Remove container if empty
+                        if (container.children.length === 0) {
+                            document.body.removeChild(container);
+                        }
+                    }, 4000);
+                });
+            }
+
+            translateToEmojiBtn.addEventListener('click', () => {
+                const text = textToEmojiInput.value;
+                const translatedEmoji = translateToEmoji(text);
+                
+                // Smooth transition effect
+                emojiOutput.style.opacity = '0';
+                setTimeout(() => {
+                    emojiOutput.innerHTML = translatedEmoji || '🤷‍♂️';
+                    emojiOutput.style.opacity = '1';
+                }, 300);
+
+                // Optional: Text-to-Speech for the translation
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(
+                        `تمت ترجمة النص: ${text} إلى رموز تعبيرية`
+                    );
+                    utterance.lang = 'ar-SA';
+                    window.speechSynthesis.speak(utterance);
+                }
+            });
+
+            const textToSignInput = document.getElementById('text-to-sign-input');
+            const translateToSignBtn = document.getElementById('translate-to-sign');
+            const signLanguageOutput = document.getElementById('sign-language-output');
+            const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+            const startRealTimeTranslationBtn = document.getElementById('start-real-time-translation');
+
+            class AdvancedSignLanguageTranslator {
+                constructor() {
+                    this.translationDictionary = {
+                        // Comprehensive Sign Language Translation Dictionary
+                        'greetings': {
+                            'مرحبا': { sign: '👋', description: 'تحية عامة', confidence: 0.95 },
+                            'السلام عليكم': { sign: '🤲', description: 'تحية إسلامية', confidence: 0.98 },
+                            'أهلا': { sign: '✋', description: 'ترحيب غير رسمي', confidence: 0.90 }
+                        },
+                        'emotions': {
+                            'سعيد': { sign: '😊', description: 'مشاعر إيجابية', confidence: 0.92 },
+                            'حزين': { sign: '😢', description: 'مشاعر سلبية', confidence: 0.88 },
+                            'غاضب': { sign: '😠', description: 'مشاعر غضب', confidence: 0.85 }
+                        },
+                        'requests': {
+                            'مساعدة': { sign: '🆘', description: 'طلب المساعدة', confidence: 0.95 },
+                            'أريد الماء': { sign: '🚰', description: 'طلب الماء', confidence: 0.90 },
+                            'أين الحمام': { sign: '🚽', description: 'السؤال عن الحمام', confidence: 0.93 }
+                        },
+                        'actions': {
+                            'اجلس': { sign: '⬇️', description: 'الجلوس', confidence: 0.94 },
+                            'قف': { sign: '⬆️', description: 'الوقوف', confidence: 0.92 },
+                            'تعال': { sign: '👉', description: 'دعوة للقدوم', confidence: 0.91 }
+                        }
+                    };
+
+                    this.fallbackTranslation = {
+                        sign: '🤷‍♂️',
+                        description: 'ترجمة غير مؤكدة',
+                        confidence: 0.5
+                    };
+                }
+
+                translateText(text) {
+                    const words = text.trim().toLowerCase().split(/\s+/);
+                    const translations = words.map(word => this.findBestTranslation(word));
+                    return translations;
+                }
+
+                findBestTranslation(word) {
+                    for (const category in this.translationDictionary) {
+                        for (const [phrase, translation] of Object.entries(this.translationDictionary[category])) {
+                            if (word.includes(phrase)) {
+                                return translation;
+                            }
+                        }
+                    }
+                    return this.fallbackTranslation;
+                }
+
+                generateDetailedTranslation(translations) {
+                    const detailedTranslation = translations.map(translation => `
+                        <div class="translation-result">
+                            <div class="translation-emoji">${translation.sign}</div>
+                            <div class="translation-details">
+                                <span class="description">${translation.description}</span>
+                                <span class="confidence">دقة: ${(translation.confidence * 100).toFixed(2)}%</span>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    return `
+                        <div class="advanced-translation-container">
+                            <h4>نتائج الترجمة الفورية</h4>
+                            ${detailedTranslation}
+                        </div>
+                    `;
+                }
+
+                startRealTimeTranslation() {
+                    if ('webkitSpeechRecognition' in window) {
+                        const recognition = new webkitSpeechRecognition();
+                        recognition.lang = 'ar-SA';
+                        recognition.continuous = true;
+                        recognition.interimResults = false;
+
+                        recognition.onresult = (event) => {
+                            const transcript = event.results[event.results.length - 1][0].transcript;
+                            const translations = this.translateText(transcript);
+                            const detailedTranslation = this.generateDetailedTranslation(translations);
+                            
+                            const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+                            realTimeTranslationOutput.innerHTML = `
+                                <p>النص الأصلي: ${transcript}</p>
+                                ${detailedTranslation}
+                            `;
+
+                            this.speakTranslationConfirmation(translations);
+                        };
+
+                        recognition.onerror = (event) => {
+                            const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+                            realTimeTranslationOutput.innerHTML = `
+                                <p class="error">خطأ في التعرف على الصوت: ${event.error}</p>
+                            `;
+                        };
+
+                        recognition.start();
+                        const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+                        realTimeTranslationOutput.textContent = 'جارٍ الاستماع...';
+                    } else {
+                        const realTimeTranslationOutput = document.getElementById('real-time-translation-output');
+                        realTimeTranslationOutput.textContent = 'عذرًا، الترجمة الفورية غير متاحة';
+                    }
+                }
+
+                speakTranslationConfirmation(translations) {
+                    if ('speechSynthesis' in window) {
+                        const averageConfidence = translations.reduce((sum, t) => sum + t.confidence, 0) / translations.length;
+                        const confirmationMessage = `تمت ترجمة النص بدقة ${(averageConfidence * 100).toFixed(2)}%`;
+                        
+                        const utterance = new SpeechSynthesisUtterance(confirmationMessage);
+                        utterance.lang = 'ar-SA';
+                        window.speechSynthesis.speak(utterance);
+                    }
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const startRealTimeTranslationBtn = document.getElementById('start-real-time-translation');
+                const signLanguageTranslator = new AdvancedSignLanguageTranslator();
+
+                startRealTimeTranslationBtn.addEventListener('click', () => {
+                    signLanguageTranslator.startRealTimeTranslation();
+                });
+            });
+
+            const subscribeButtons = document.querySelectorAll('.subscribe-btn');
+            
+            subscribeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tier = button.getAttribute('data-tier');
+                    const contactNumber = '01140427665';
+                    
+                    Swal.fire({
+                        title: `اشتراك الباقة ${getTierName(tier)}`,
+                        html: `
+                            <p>للاستكمال، يرجى التواصل على:</p>
+                            <h3>${contactNumber}</h3>
+                            <p>المهندس: خالد يونس رجب</p>
+                            <small>سيتم مساعدتك في إتمام الاشتراك</small>
+                        `,
+                        icon: 'info',
+                        confirmButtonText: 'نسخ رقم الهاتف',
+                        showCancelButton: true,
+                        cancelButtonText: 'إلغاء'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            navigator.clipboard.writeText(contactNumber).then(() => {
+                                Swal.fire('تم نسخ رقم الهاتف', '', 'success');
+                            });
+                        }
+                    });
+                });
+            });
+
+            function getTierName(tier) {
+                switch(tier) {
+                    case 'basic': return 'الأساسية';
+                    case 'advanced': return 'المتقدمة';
+                    case 'pro': return 'الاحترافية';
+                    default: return '';
+                }
+            }
+
+            const buttonSound = new Howl({
+                src: ['button-click.mp3'], 
+                volume: 0.5
+            });
+
+            document.querySelectorAll('.btn-sound-effect').forEach(button => {
+                button.addEventListener('click', () => {
+                    buttonSound.play();
+                });
+            });
+
+            function createStrengthEmojiAnimation() {
+                const emoji = document.createElement('div');
+                emoji.textContent = '💪';
+                emoji.classList.add('strength-emoji-animation');
+                emoji.style.left = `${Math.random() * window.innerWidth}px`;
+                emoji.style.top = `${Math.random() * window.innerHeight}px`;
+                document.body.appendChild(emoji);
+
+                setTimeout(() => {
+                    document.body.removeChild(emoji);
+                    createStrengthEmojiAnimation();
+                }, 5000);
+            }
+
+            createStrengthEmojiAnimation();
+
+            const startAdvancedTranslationBtn = document.getElementById('start-advanced-translation');
+            const stopAdvancedTranslationBtn = document.getElementById('stop-advanced-translation');
+            const advancedTranslationResult = document.getElementById('advanced-translation-result');
+
+            if (startAdvancedTranslationBtn && stopAdvancedTranslationBtn && advancedTranslationResult) {
+                const advancedTranslationMessages = [
+                    "الترجمة جارية بدقة عالية 🌟",
+                    "تحليل لغة الإشارة قيد التنفيذ 🤲",
+                    "جاري التعرف على الإشارات 👀",
+                    "معالجة البيانات باستخدام الذكاء الاصطناعي 🧠",
+                    "دقة الترجمة: 98% ✨"
+                ];
+
+                startAdvancedTranslationBtn.addEventListener('click', () => {
+                    let currentIndex = 0;
+                    const translationInterval = setInterval(() => {
+                        advancedTranslationResult.innerHTML = `
+                            ${advancedTranslationMessages[currentIndex]}
+                            <div class="translation-wave"></div>
+                        `;
+                        currentIndex = (currentIndex + 1) % advancedTranslationMessages.length;
+                    }, 3000);
+
+                    stopAdvancedTranslationBtn.onclick = () => {
+                        clearInterval(translationInterval);
+                        advancedTranslationResult.innerHTML = 'تم إيقاف الترجمة';
+                    };
+                });
+            }
+
+            const signLanguageFeedback = document.getElementById('sign-language-feedback');
+            const signLanguageActions = {
+                'greet-btn': {
+                    message: 'مرحبًا! كيف يمكنني مساعدتك اليوم؟',
+                    sign: '👋'
+                },
+                'help-btn': {
+                    message: 'نعم، أنا هنا للمساعدة. تفضل بطلبك.',
+                    sign: '🤲'
+                },
+                'question-btn': {
+                    message: 'اسألني أي سؤال وسأساعدك.',
+                    sign: '❓'
+                }
+            };
+
+            Object.keys(signLanguageActions).forEach(btnId => {
+                const btn = document.getElementById(btnId);
+                btn.addEventListener('click', () => {
+                    const action = signLanguageActions[btnId];
+                    signLanguageFeedback.innerHTML = `
+                        <p>${action.message}</p>
+                        <div style="font-size: 3em; text-align: center;">${action.sign}</div>
+                    `;
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 3D Sign Language Translator
+            const characterOptions = document.querySelectorAll('.character-option');
+            const startSignCameraBtn = document.getElementById('start-sign-camera');
+            const stopSignCameraBtn = document.getElementById('stop-sign-camera');
+            const signInputVideo = document.getElementById('sign-input-video');
+            const translateTextToSignBtn = document.getElementById('translate-text-to-sign');
+            const textForSign = document.getElementById('text-for-sign');
+            const animatedCharacter = document.querySelector('.animated-character');
+            
+            // Character Selection
+            characterOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    characterOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                    
+                    const charType = option.getAttribute('data-char');
+                    updateCharacterStyle(charType);
+                });
+            });
+            
+            function updateCharacterStyle(charType) {
+                const head = document.querySelector('.character-head');
+                const body = document.querySelector('.character-body');
+                const leftArm = document.querySelector('.left-arm');
+                const rightArm = document.querySelector('.right-arm');
+                
+                switch(charType) {
+                    case 'boy':
+                        head.style.background = 'radial-gradient(circle, #ffb347, #ffcc33)';
+                        body.style.background = 'linear-gradient(135deg, #3498db, #2980b9)';
+                        leftArm.style.background = rightArm.style.background = 'linear-gradient(135deg, #e67e22, #d35400)';
+                        break;
+                    case 'girl':
+                        head.style.background = 'radial-gradient(circle, #ff9a9e, #fad0c4)';
+                        body.style.background = 'linear-gradient(135deg, #a18cd1, #fbc2eb)';
+                        leftArm.style.background = rightArm.style.background = 'linear-gradient(135deg, #fbc2eb, #a18cd1)';
+                        break;
+                    case 'cartoon':
+                        head.style.background = 'radial-gradient(circle, #fddb92, #d1fdff)';
+                        body.style.background = 'linear-gradient(135deg, #84fab0, #8fd3f4)';
+                        leftArm.style.background = rightArm.style.background = 'linear-gradient(135deg, #a1c4fd, #c2e9fb)';
+                        break;
+                    case 'anime':
+                        head.style.background = 'radial-gradient(circle, #fff1eb, #ace0f9)';
+                        body.style.background = 'linear-gradient(135deg, #c2e9fb, #a1c4fd)';
+                        leftArm.style.background = rightArm.style.background = 'linear-gradient(135deg, #ace0f9, #fff1eb)';
+                        break;
+                }
+            }
+            
+            // Sign Language Camera
+            startSignCameraBtn.addEventListener('click', () => {
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(stream => {
+                            signInputVideo.srcObject = stream;
+                            startSignCameraBtn.disabled = true;
+                            stopSignCameraBtn.disabled = false;
+                        })
+                        .catch(err => {
+                            console.error('Error accessing camera: ', err);
+                            alert('خطأ في الوصول إلى الكاميرا. يرجى التأكد من السماح بالوصول.');
+                        });
+                } else {
+                    alert('عذراً، متصفحك لا يدعم الوصول إلى الكاميرا.');
+                }
+            });
+            
+            stopSignCameraBtn.addEventListener('click', () => {
+                const stream = signInputVideo.srcObject;
+                const tracks = stream.getTracks();
+                
+                tracks.forEach(track => track.stop());
+                signInputVideo.srcObject = null;
+                
+                startSignCameraBtn.disabled = false;
+                stopSignCameraBtn.disabled = true;
+            });
+            
+            // Text to Sign Translation
+            translateTextToSignBtn.addEventListener('click', () => {
+                const text = textForSign.value.trim();
+                if (text) {
+                    // Simulate sign language animation
+                    animateSignLanguage(text);
+                } else {
+                    alert('الرجاء إدخال نص للترجمة');
+                }
+            });
+            
+            function animateSignLanguage(text) {
+                const words = text.split(' ');
+                let wordIndex = 0;
+                
+                const leftArm = document.querySelector('.left-arm');
+                const rightArm = document.querySelector('.right-arm');
+                
+                const signInterval = setInterval(() => {
+                    if (wordIndex >= words.length) {
+                        clearInterval(signInterval);
+                        leftArm.style.animation = rightArm.style.animation = '';
+                        return;
+                    }
+                    
+                    // Different animation for each word
+                    const randomAnim1 = `signMotion${Math.floor(Math.random() * 3 + 1)} 1s ease`;
+                    const randomAnim2 = `signMotion${Math.floor(Math.random() * 3 + 1)} 1s ease`;
+                    
+                    leftArm.style.animation = randomAnim1;
+                    rightArm.style.animation = randomAnim2;
+                    
+                    wordIndex++;
+                }, 1000);
+            }
+            
+            // Create keyframe animations for sign language
+            const styleElement = document.createElement('style');
+            styleElement.textContent = `
+                @keyframes signMotion1 {
+                    0% { transform: rotate(0deg); }
+                    50% { transform: rotate(45deg); }
+                    100% { transform: rotate(0deg); }
+                }
+                
+                @keyframes signMotion2 {
+                    0% { transform: translateY(0); }
+                    50% { transform: translateY(-20px); }
+                    100% { transform: translateY(0); }
+                }
+                
+                @keyframes signMotion3 {
+                    0% { transform: rotate(0deg) translateX(0); }
+                    50% { transform: rotate(-30deg) translateX(-10px); }
+                    100% { transform: rotate(0deg) translateX(0); }
+                }
+                
+                .animated-character {
+                    position: relative;
+                    width: 200px;
+                    height: 300px;
+                    margin: 0 auto;
+                }
+                
+                .character-head {
+                    position: absolute;
+                    top: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 80px;
+                    height: 80px;
+                    background: radial-gradient(circle, #ffb347, #ffcc33);
+                    border-radius: 50%;
+                    z-index: 2;
+                }
+                
+                .character-body {
+                    position: absolute;
+                    top: 100px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100px;
+                    height: 150px;
+                    background: linear-gradient(135deg, #3498db, #2980b9);
+                    border-radius: 20px;
+                    z-index: 1;
+                }
+                
+                .left-arm, .right-arm {
+                    position: absolute;
+                    width: 20px;
+                    height: 100px;
+                    background: linear-gradient(135deg, #e67e22, #d35400);
+                    border-radius: 10px;
+                    z-index: 2;
+                    transform-origin: top center;
+                }
+                
+                .left-arm {
+                    top: 110px;
+                    left: calc(50% - 70px);
+                }
+                
+                .right-arm {
+                    top: 110px;
+                    right: calc(50% - 70px);
+                }
+                
+                /* AR Glasses Styles */
+                .ar-glasses-simulator {
+                    background-color: #2c3e50;
+                    border-radius: 15px;
+                    padding: 20px;
+                    color: white;
+                }
+                
+                .glasses-view {
+                    position: relative;
+                    width: 100%;
+                    height: 300px;
+                    border: 5px solid #34495e;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    background-color: #000;
+                }
+                
+                .glasses-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+                    pointer-events: none;
+                }
+                
+                #ar-translation-overlay {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 20px;
+                    right: 20px;
+                    min-height: 40px;
+                    background-color: rgba(52, 152, 219, 0.7);
+                    border-radius: 10px;
+                    padding: 10px;
+                    color: white;
+                    font-weight: bold;
+                }
+                
+                .glasses-camera-feed {
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                #glasses-video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                
+                .ar-controls {
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    z-index: 3;
+                }
+                
+                .ar-emotions-legend {
+                    display: flex;
+                    justify-content: space-around;
+                    margin-top: 15px;
+                }
+                
+                .emotion-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+                
+                .emotion-color {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                }
+                
+                .emotion-color.happy { background-color: #2ecc71; }
+                .emotion-color.angry { background-color: #e74c3c; }
+                .emotion-color.nervous { background-color: #f39c12; }
+                .emotion-color.neutral { background-color: #3498db; }
+                
+                /* Smart Watch Styles */
+                .smart-watch-simulator {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 20px;
+                }
+                
+                .watch-display {
+                    width: 150px;
+                    height: 180px;
+                    background-color: #2c3e50;
+                    border-radius: 20px;
+                    padding: 10px;
+                    position: relative;
+                }
+                
+                .watch-screen {
+                    width: 100%;
+                    height: 100%;
+                    background-color: #34495e;
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                }
+                
+                .watch-time {
+                    font-size: 1.5em;
+                    margin-bottom: 10px;
+                }
+                
+                #vibration-indicator {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+                
+                #vibration-indicator.active {
+                    opacity: 1;
+                    animation: vibrate 0.3s infinite;
+                }
+                
+                @keyframes vibrate {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-2px); }
+                    50% { transform: translateX(0); }
+                    75% { transform: translateX(2px); }
+                }
+                
+                .sound-simulator {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 10px;
+                }
+                
+                .sound-btn {
+                    padding: 10px 15px;
+                    background-color: #3498db;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                
+                .sound-btn:hover {
+                    background-color: #2980b9;
+                    transform: scale(1.05);
+                }
+                
+                /* Smart Communication Panel Styles */
+                .smart-panel {
+                    background-color: #f8f9fa;
+                    padding: 20px;
+                    border-radius: 15px;
+                }
+                
+                .panel-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                    gap: 15px;
+                    margin-bottom: 20px;
+                }
+                
+                .panel-item {
+                    padding: 15px 10px;
+                    background-color: #3498db;
+                    color: white;
+                    border: none;
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                
+                .panel-item i {
+                    font-size: 1.5em;
+                }
+                
+                .panel-item:hover {
+                    background-color: #2980b9;
+                    transform: scale(1.05);
+                }
+                
+                .panel-output {
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                    text-align: center;
+                }
+                
+                #panel-sentence {
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                    font-weight: bold;
+                }
+                
+                /* Emotion Analysis Styles */
+                .emotion-analyzer {
+                    background-color: #f8f9fa;
+                    padding: 20px;
+                    border-radius: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                }
+                
+                .analyzer-input {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+                
+                .input-status {
+                    flex-grow: 1;
+                    padding: 10px;
+                    background-color: #ecf0f1;
+                    border-radius: 10px;
+                    text-align: center;
+                }
+                
+                .analyzer-results {
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+                
+                .emotion-meter {
+                    margin-bottom: 20px;
+                }
+                
+                .emotion-bar {
+                    height: 20px;
+                    background-color: #ecf0f1;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    margin-bottom: 10px;
+                }
+                
+                .emotion-fill {
+                    height: 100%;
+                    background: linear-gradient(to right, #3498db, #2ecc71);
+                    transition: width 0.5s ease;
+                }
+                
+                .emotion-label {
+                    text-align: center;
+                    font-weight: bold;
+                }
+                
+                .emotion-details {
+                    padding: 15px;
+                    background-color: #f8f9fa;
+                    border-radius: 10px;
+                    min-height: 80px;
+                }
+                
+                /* Pronunciation Training Styles */
+                .pronunciation-trainer {
+                    background-color: #f8f9fa;
+                    padding: 20px;
+                    border-radius: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                }
+                
+                .exercise-card {
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                }
+                
+                .pronunciation-example {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                }
+                
+                .arabic-letter {
+                    font-size: 4em;
+                    font-weight: bold;
+                    color: #3498db;
+                }
+                
+                .small-btn {
+                    padding: 8px 15px;
+                    font-size: 0.9em;
+                }
+                
+                .pronunciation-practice {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                }
+                
+                .practice-status {
+                    padding: 10px;
+                    background-color: #f8f9fa;
+                    border-radius: 10px;
+                    min-width: 150px;
+                    text-align: center;
+                }
+                
+                .trainer-feedback {
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+                
+                .feedback-visual {
+                    margin-bottom: 20px;
+                }
+                
+                .sound-wave {
+                    display: flex;
+                    justify-content: center;
+                    gap: 5px;
+                    height: 60px;
+                    align-items: center;
+                }
+                
+                .wave-bar {
+                    width: 10px;
+                    height: 10px;
+                    background-color: #3498db;
+                    border-radius: 2px;
+                    transition: height 0.2s ease;
+                }
+                
+                .sound-wave.active .wave-bar:nth-child(1) { height: 15px; }
+                .sound-wave.active .wave-bar:nth-child(2) { height: 30px; }
+                .sound-wave.active .wave-bar:nth-child(3) { height: 45px; }
+                .sound-wave.active .wave-bar:nth-child(4) { height: 60px; }
+                .sound-wave.active .wave-bar:nth-child(5) { height: 45px; }
+                .sound-wave.active .wave-bar:nth-child(6) { height: 30px; }
+                .sound-wave.active .wave-bar:nth-child(7) { height: 15px; }
+                
+                .feedback-text {
+                    background-color: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 10px;
+                    margin-bottom: 20px;
+                    min-height: 60px;
+                }
+                
+                .training-progress {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                
+                .progress-label {
+                    min-width: 100px;
+                }
+                
+                .progress-bar {
+                    flex-grow: 1;
+                    height: 15px;
+                    background-color: #ecf0f1;
+                    border-radius: 10px;
+                    overflow: hidden;
+                }
+                
+                .progress-fill {
+                    height: 100%;
+                    background: linear-gradient(to right, #3498db, #2ecc71);
+                    transition: width 0.5s ease;
+                }
+                
+                .progress-percentage {
+                    min-width: 40px;
+                    text-align: right;
+                }
+            `;
+            document.head.appendChild(styleElement);
+            
+            // AR Glasses Functionality
+            const startArGlassesBtn = document.getElementById('start-ar-glasses');
+            const stopArGlassesBtn = document.getElementById('stop-ar-glasses');
+            const glassesVideo = document.getElementById('glasses-video');
+            const arTranslationOverlay = document.getElementById('ar-translation-overlay');
+            
+            startArGlassesBtn.addEventListener('click', () => {
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(stream => {
+                            glassesVideo.srcObject = stream;
+                            startArGlassesBtn.disabled = true;
+                            stopArGlassesBtn.disabled = false;
+                            
+                            // Simulate AR translations
+                            simulateARTranslations();
+                        })
+                        .catch(err => {
+                            console.error('Error accessing camera: ', err);
+                            alert('خطأ في الوصول إلى الكاميرا. يرجى التأكد من السماح بالوصول.');
+                        });
+                } else {
+                    alert('عذراً، متصفحك لا يدعم الوصول إلى الكاميرا.');
+                }
+            });
+            
+            stopArGlassesBtn.addEventListener('click', () => {
+                const stream = glassesVideo.srcObject;
+                const tracks = stream.getTracks();
+                
+                tracks.forEach(track => track.stop());
+                glassesVideo.srcObject = null;
+                
+                startArGlassesBtn.disabled = false;
+                stopArGlassesBtn.disabled = true;
+                
+                // Clear the AR translation interval
+                clearInterval(arTranslationInterval);
+            });
+            
+            let arTranslationInterval;
+            
+            function simulateARTranslations() {
+                const translations = [
+                    { text: "مرحباً، كيف حالك اليوم؟", emotion: "happy" },
+                    { text: "من فضلك أريد المساعدة!", emotion: "nervous" },
+                    { text: "لا أوافق على هذا الاقتراح.", emotion: "angry" },
+                    { text: "الطقس جميل اليوم", emotion: "neutral" },
+                    { text: "هل يمكنني الحصول على المزيد من المعلومات؟", emotion: "neutral" }
+                ];
+                
+                arTranslationInterval = setInterval(() => {
+                    const randomTranslation = translations[Math.floor(Math.random() * translations.length)];
+                    
+                    arTranslationOverlay.textContent = randomTranslation.text;
+                    arTranslationOverlay.className = '';
+                    arTranslationOverlay.classList.add(randomTranslation.emotion);
+                    
+                    // Set color based on emotion
+                    switch(randomTranslation.emotion) {
+                        case 'happy':
+                            arTranslationOverlay.style.backgroundColor = 'rgba(46, 204, 113, 0.7)';
+                            break;
+                        case 'angry':
+                            arTranslationOverlay.style.backgroundColor = 'rgba(231, 76, 60, 0.7)';
+                            break;
+                        case 'nervous':
+                            arTranslationOverlay.style.backgroundColor = 'rgba(243, 156, 18, 0.7)';
+                            break;
+                        case 'neutral':
+                            arTranslationOverlay.style.backgroundColor = 'rgba(52, 152, 219, 0.7)';
+                            break;
+                    }
+                }, 3000);
+            }
+            
+            // Smart Watch Vibration Functionality
+            const soundButtons = document.querySelectorAll('.sound-btn');
+            const vibrationIndicator = document.getElementById('vibration-indicator');
+            
+            soundButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const soundType = button.getAttribute('data-sound');
+                    
+                    // Activate vibration animation
+                    vibrationIndicator.classList.add('active');
+                    
+                    // Update the vibration text based on sound type
+                    switch(soundType) {
+                        case 'bell':
+                            vibrationIndicator.innerHTML = '<i class="fas fa-bell"></i><span>جرس الباب</span>';
+                            break;
+                        case 'alarm':
+                            vibrationIndicator.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>إنذار</span>';
+                            break;
+                        case 'door':
+                            vibrationIndicator.innerHTML = '<i class="fas fa-door-open"></i><span>طرق الباب</span>';
+                            break;
+                        case 'baby':
+                            vibrationIndicator.innerHTML = '<i class="fas fa-baby"></i><span>بكاء طفل</span>';
+                            break;
+                    }
+                    
+                    // Reset vibration after a delay
+                    setTimeout(() => {
+                        vibrationIndicator.classList.remove('active');
+                    }, 2000);
+                });
+            });
+            
+            // Smart Communication Panel
+            const panelItems = document.querySelectorAll('.panel-item');
+            const panelSentence = document.getElementById('panel-sentence');
+            const speakSentenceBtn = document.getElementById('speak-sentence');
+            
+            panelItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const phrase = item.getAttribute('data-phrase');
+                    panelSentence.textContent = phrase;
+                    speakSentenceBtn.disabled = false;
+                });
+            });
+            
+            speakSentenceBtn.addEventListener('click', () => {
+                const text = panelSentence.textContent;
+                
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'ar-SA';
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    alert('عذراً، متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+                }
+            });
+            
+            // Emotion Analysis
+            const startEmotionAnalysisBtn = document.getElementById('start-emotion-analysis');
+            const inputStatus = document.querySelector('.input-status');
+            const emotionFill = document.querySelector('.emotion-fill');
+            const emotionState = document.getElementById('emotion-state');
+            const emotionDescription = document.getElementById('emotion-description');
+            
+            startEmotionAnalysisBtn.addEventListener('click', () => {
+                if ('webkitSpeechRecognition' in window) {
+                    const recognition = new webkitSpeechRecognition();
+                    recognition.lang = 'ar-SA';
+                    recognition.continuous = false;
+                    
+                    inputStatus.textContent = 'جارٍ الاستماع...';
+                    
+                    recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        inputStatus.textContent = `تم التقاط: "${transcript}"`;
+                        
+                        // Simulate emotion analysis
+                        analyzeEmotion(transcript);
+                    };
+                    
+                    recognition.onerror = (event) => {
+                        inputStatus.textContent = `خطأ في التعرف على الصوت: ${event.error}`;
+                    };
+                    
+                    recognition.start();
+                } else {
+                    inputStatus.textContent = 'عذراً، متصفحك لا يدعم خاصية التعرف على الصوت.';
+                }
+            });
+            
+            function analyzeEmotion(text) {
+                // Simulated emotion analysis based on keywords
+                let emotionScore = 0.5; // Neutral by default
+                let detectedEmotion = 'محايد';
+                let description = 'نبرة صوت عادية، لا تظهر انفعالات واضحة.';
+                
+                // Happy keywords
+                if (text.includes('سعيد') || text.includes('فرح') || text.includes('ممتاز') || 
+                    text.includes('رائع') || text.includes('جميل')) {
+                    emotionScore = 0.8;
+                    detectedEmotion = 'سعيد';
+                    description = 'نبرة صوتك تدل على السعادة والإيجابية والحماس.';
+                }
+                // Angry keywords
+                else if (text.includes('غاضب') || text.includes('غضب') || text.includes('مستاء') || 
+                        text.includes('أكره') || text.includes('سيئ')) {
+                    emotionScore = 0.7;
+                    detectedEmotion = 'غاضب';
+                    description = 'نبرة صوتك تدل على الغضب والاستياء. حاول الاسترخاء.';
+                }
+                // Nervous keywords
+                else if (text.includes('قلق') || text.includes('خائف') || text.includes('متوتر') || 
+                        text.includes('خوف') || text.includes('مرتبك')) {
+                    emotionScore = 0.6;
+                    detectedEmotion = 'متوتر';
+                    description = 'نبرة صوتك تدل على القلق والتوتر. خذ نفساً عميقاً.';
+                }
+                
+                // Update UI with emotion analysis
+                emotionFill.style.width = `${emotionScore * 100}%`;
+                emotionState.textContent = detectedEmotion;
+                emotionDescription.textContent = description;
+            }
+            
+            // Pronunciation Training
+            const playExampleBtn = document.getElementById('play-example');
+            const startPronunciationBtn = document.getElementById('start-pronunciation');
+            const practiceStatus = document.querySelector('.practice-status');
+            const pronunciationWave = document.getElementById('pronunciation-wave');
+            const pronunciationFeedback = document.getElementById('pronunciation-feedback');
+            const progressFill = document.querySelector('.progress-fill');
+            const progressPercentage = document.querySelector('.progress-percentage');
+            const currentExercise = document.getElementById('current-exercise');
+            
+            const exercises = [
+                { letter: 'ر', name: 'حرف الراء (ر)', example: 'رمان' },
+                { letter: 'ض', name: 'حرف الضاد (ض)', example: 'ضوء' },
+                { letter: 'ظ', name: 'حرف الظاء (ظ)', example: 'ظلام' },
+                { letter: 'ع', name: 'حرف العين (ع)', example: 'عين' },
+                { letter: 'غ', name: 'حرف الغين (غ)', example: 'غيمة' }
+            ];
+            
+            let currentExerciseIndex = 0;
+            let trainingProgress = 0;
+            
+            playExampleBtn.addEventListener('click', () => {
+                const exercise = exercises[currentExerciseIndex];
+                
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(exercise.example);
+                    utterance.lang = 'ar-SA';
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    alert('عذراً، متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+                }
+            });
+            
+            startPronunciationBtn.addEventListener('click', () => {
+                if ('webkitSpeechRecognition' in window) {
+                    const recognition = new webkitSpeechRecognition();
+                    recognition.lang = 'ar-SA';
+                    recognition.continuous = false;
+                    
+                    practiceStatus.textContent = 'استمع إليك...';
+                    pronunciationWave.classList.add('active');
+                    
+                    recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        practiceStatus.textContent = `تم التقاط: "${transcript}"`;
+                        
+                        // Simulate pronunciation analysis
+                        analyzePronunciation(transcript);
+                    };
+                    
+                    recognition.onerror = (event) => {
+                        practiceStatus.textContent = `خطأ في التعرف على الصوت: ${event.error}`;
+                        pronunciationWave.classList.remove('active');
+                    };
+                    
+                    recognition.onend = () => {
+                        pronunciationWave.classList.remove('active');
+                    };
+                    
+                    recognition.start();
+                } else {
+                    practiceStatus.textContent = 'عذراً، متصفحك لا يدعم خاصية التعرف على الصوت.';
+                }
+            });
+            
+            function analyzePronunciation(text) {
+                const exercise = exercises[currentExerciseIndex];
+                let feedback = '';
+                let success = false;
+                
+                // Check if the pronunciation contains the target letter
+                if (text.includes(exercise.letter)) {
+                    // Random success rate simulation
+                    const accuracy = Math.random();
+                    
+                    if (accuracy > 0.7) {
+                        feedback = `ممتاز! نطقت حرف ${exercise.letter} بشكل صحيح. استمر!`;
+                        success = true;
+                    } else {
+                        feedback = `جيد، لكن يمكن تحسين مخرج حرف ${exercise.letter}. حاول مرة أخرى.`;
+                    }
+                } else {
+                    feedback = `لم نتمكن من تمييز حرف ${exercise.letter} في كلامك. حاول مرة أخرى.`;
+                }
+                
+                pronunciationFeedback.textContent = feedback;
+                
+                if (success) {
+                    // Move to next exercise
+                    trainingProgress += 20;
+                    if (trainingProgress > 100) trainingProgress = 100;
+                    
+                    progressFill.style.width = `${trainingProgress}%`;
+                    progressPercentage.textContent = `${trainingProgress}%`;
+                    
+                    if (trainingProgress >= 100) {
+                        pronunciationFeedback.textContent = 'تهانينا! أكملت تدريب النطق بنجاح!';
+                    } else {
+                        // Move to next exercise
+                        currentExerciseIndex = (currentExerciseIndex + 1) % exercises.length;
+                        const nextExercise = exercises[currentExerciseIndex];
+                        currentExercise.textContent = nextExercise.name;
+                        document.querySelector('.arabic-letter').textContent = nextExercise.letter;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
